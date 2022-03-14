@@ -31,7 +31,7 @@ const onInput = (values:any) =>{
        {/* <Sider>
            <Row gutter={[0,16]} justify='center'>
                <Col>
-               <Button className='registrationButton' icon={<UserAddOutlined />}>Representative</Button>
+               <Button className='registrationButton' icon={<UserAddOutlined />}>Representative hjkkjh</Button>
                </Col>
                <Col>
                <Button className='registrationButton' icon={<ClusterOutlined />}>Institution</Button>
