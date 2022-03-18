@@ -18,12 +18,18 @@ import {
 import {
   ArrowDownOutlined,
   ArrowRightOutlined,
+  CheckCircleFilled,
   DownloadOutlined,
+  ExperimentOutlined,
+  GlobalOutlined,
   InfoCircleOutlined,
-  PhoneOutlined
+  PhoneOutlined,
+  RightCircleOutlined,
+  SolutionOutlined,
+  ToolOutlined
 } from '@ant-design/icons'
-import { motion } from 'framer-motion';
-import {Link} from 'react-router-dom';
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const Home: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = React.useState(false)
@@ -580,7 +586,6 @@ const Home: React.FC = () => {
     'Man charged over missing wedding girl.',
     'Los Angeles battles huge wildfires.'
   ]
-  
 
   return (
     <React.Fragment>
@@ -593,9 +598,9 @@ const Home: React.FC = () => {
           <p>
             We focuses on the development of institutional quality solutions
             that help improve communities and industries. We target
-            environmental weakness effecting communites, engineer solutions to
-            solve the respective problem and finally bring our world changing
-            solutions directly to market.{' '}
+            environmental weakness effecting communites, engineer solutions that solve 
+            problem and finally bring our world changing
+            solutions to market.{' '}
           </p>
         </Col>
         <Col
@@ -607,7 +612,7 @@ const Home: React.FC = () => {
             flexFlow: 'wrap',
             justifyContent: 'space-evenly',
             alignItems: 'end',
-            height:'315.94px'
+            height: '315.94px'
           }}
         >
           <motion.div
@@ -643,91 +648,192 @@ const Home: React.FC = () => {
         </Col>
       </Row>
 
-      <Row  className='rowHero'>
-
-      <Col xs={24} md={20} offset={1} className='nutrimap'>
+      <Row className='rowHero'>
+        <Col xs={24} md={20} offset={1} className='nutrimap'>
           <h1>
-            <span>Present </span>solutions
-          </h1>         
-           <p>
-           Innovative solutions designed to change the way 
-           businesses interact with consumers.
-          </p>
-      </Col>
-
-      <Col xs={24} md={15} offset={1} className='nutrimap'>
-      <h2>Nutri<span>map</span></h2>
+            Solutions
+          </h1>
           <p>
-          A nutritional mapping solution providing healthcare 
-          institutions,food manufacturers, and dietician with invaluable 
-          nutritional information about the food they design 
-          and prescribe.  
+            Innovative solutions designed to change the way businesses interact
+            with consumers.
           </p>
-          <div>
-          <Statistic title="Underweight adults globally" value={'462'} suffix='million' />
-          <Statistic title="Overweight adults globally" value={'1.6'} suffix='billion' />
-          <Statistic title="World's population undernourished" value={'663'} suffix='million' />
+        </Col>
+        </Row>
 
-          </div>
+        <Row>
+          <Col xs={24} md={15} offset={1} className='nutrimap'>
+            <motion.div className='solutionHeader'>
+            <ExperimentOutlined  className='solutionIcon'/>
+            <h2>Nutrimap</h2>
+
+            </motion.div>
+
+            <p>
+              Nutrimap provide institutions operating within the healthcare and
+              food manufacturing industries with invaluable information about
+              the meals they plan and foods they design.
+            </p>
+            <div>
+              <Statistic title='Number of elements and vitamins' value={'20+'} />
+              <Statistic
+                title='Number of macronutrients including water observed'
+                value={'7'}
+              />
+               <Statistic
+                title='Number of life-stage groups observed'
+                value={'6'}
+              />
+            </div>
+          </Col>
+
+          <Col xs={24} md={5} offset={1} className='nutrimap'>
+            <h2>Features:</h2>
+
+            <motion.p whileHover={{ scale: 1.1 }}>
+              Nutrient Report{' '}
+              <Popover
+                content={
+                  <p className='popover'>
+                    Identify micro and macro nutrient varialbe within a given product.
+                  </p>
+                }
+                title='Micronutrients'
+                trigger='click'
+              >
+                <InfoCircleOutlined />
+              </Popover>{' '}
+            </motion.p>
+            <motion.p whileHover={{ scale: 1.1 }}>
+              Nutrient Sourcing{' '}
+              <Popover
+                content={
+                  <p className='popover'>
+                    Locate what maufacurers, ingredients and amounts effect a
+                    products nutrient profile.
+                  </p>
+                }
+                title='Macronutrients'
+                trigger='click'
+              >
+                <InfoCircleOutlined />
+              </Popover>{' '}
+            </motion.p>
+            <motion.p whileHover={{ scale: 1.1 }}>
+              Life stage analysis{' '}
+              <Popover
+                content={
+                  <p className='popover'>
+                    A comparative analysis that provides 
+                    indentifying information on nutrients levels and how 
+                    they impact various life-stage groups.{' '}
+                  </p>
+                }
+                title='Life Stage'
+                trigger='click'
+              >
+                <InfoCircleOutlined />
+              </Popover>{' '}
+            </motion.p>
+            <Link to='/nutrimap'>
+              <motion.button
+                className='button'
+                whileHover={{ backgroundColor: '#b8862369' }}
+                transition={{ duration: 0 }}
+              >
+                Onboarding
+              </motion.button>{' '}
+            </Link>
+          </Col>
+        </Row>
+
+        <Row className='rowHero'>
+        <Col xs={24} md={20} offset={1} className='nutrimap'>
+          <h1>
+            Who we are.
+          </h1>
+          <p>
+            Innovative solutions designed to change the way businesses interact
+            with consumers.
+          </p>
+        </Col>
+        </Row>
+
+        <Row>
+          <Col xs={24} md={6} offset={1} className='nutrimap'>
+            <motion.div className='solutionHeader'>
+            <SolutionOutlined  className='solutionIcon'/>
+            <h2>Well-being</h2>
+            </motion.div>
+            <p>
+              Nutrimap provide institutions operating within the healthcare and
+              food manufacturing industries with invaluable information about
+              the meals they plan and foods they design.
+            </p>
+          </Col>
+          <Col xs={24} md={6} offset={1} className='nutrimap'>
+            <motion.div className='solutionHeader'>
+            <ToolOutlined  className='solutionIcon'/>
+            <h2>Engineering</h2>
+            </motion.div>
+            <p>
+              Nutrimap provide institutions operating within the healthcare and
+              food manufacturing industries with invaluable information about
+              the meals they plan and foods they design.
+            </p>
+          </Col>
+          <Col xs={24} md={6} offset={1} className='nutrimap'>
+            <motion.div className='solutionHeader'>
+            <GlobalOutlined  className='solutionIcon'/>
+            <h2>Global</h2>
+            </motion.div>
+            <p>
+              Nutrimap provide institutions operating within the healthcare and
+              food manufacturing industries with invaluable information about
+              the meals they plan and foods they design.
+            </p>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col xs={24} md={15} offset={1} className='nutrimap'>
+            <motion.div className='solutionHeader'>
+            <ToolOutlined  className='solutionIcon'/>
+            <h2>Engineering</h2>
+            </motion.div>
+            <p>
+              Nutrimap provide institutions operating within the healthcare and
+              food manufacturing industries with invaluable information about
+              the meals they plan and foods they design.
+            </p>
+          </Col>
          
-      </Col>
-      <Col xs={24} md={5} offset={1}  className='nutrimap'>
-          <h2>Key facts</h2>
-         
-          <motion.p whileHover={{scale:1.1}}>Micronutrients <Popover content={<p className='popover'>Micronutrients, often referred to as <span>vitamins</span> and <span>minerals</span>, are vital to healthy development, disease prevention, and wellbeing. With the exception of vitamin D, micronutrients are not produced in the body and must be derived from the diet.</p>} title="Micronutrients" trigger="click"><InfoCircleOutlined /></Popover> </motion.p>
-          <motion.p whileHover={{scale:1.1}}>Macronutrients <Popover content={<p className='popover'>Macronutrients are a group of nutrients that provide your body with energy and the components it needs to maintain its structure and functions. Macronutrients include <span>carbohydrates</span>, <span>protein</span>, and <span>fat</span>.</p>} title="Macronutrients" trigger="click"><InfoCircleOutlined /></Popover> </motion.p>
-          <motion.p whileHover={{scale:1.1}}>Life-Stage <Popover content={'klhkjj'} title="Life Stage" trigger="click"><InfoCircleOutlined /></Popover> </motion.p>   
-          <Link to='/nutrimap'><motion.button className='button' whileHover={{backgroundColor:'#b8862369'}} transition={{duration:0}}>Schedule Consultation</motion.button> </Link>   
-      </Col>
-
-      <Col xs={24} md={15} offset={1} className='nutrimap'>
-          <h2>Nutrimap</h2>
-          <p>
-            Nutrimap is a data driven nutritional analysis solution that
-            provides greater insight into the food we eat and design. This
-            solution gives institutions information into the nutrient content of
-            food products and their affect on individuals at various stages in
-            life.
-          </p>
-      </Col>
-      <Col xs={24} md={5} offset={1}  className='nutrimap'>
-          <h2>Nutrimap</h2>
-          <p>
-            Nutrimap is a data driven nutritional analysis solution that
-            provides greater insight into the food we eat and design. This
-            solution gives institutions information into the nutrient content of
-            food products and their affect on individuals at various stages in
-            life.
-          </p>
-      </Col>
-
-      <Col xs={24} md={15} offset={1} className='nutrimap'>
-          <h2>Nutrimap</h2>
-          <p>
-            Nutrimap is a data driven nutritional analysis solution that
-            provides greater insight into the food we eat and design. This
-            solution gives institutions information into the nutrient content of
-            food products and their affect on individuals at various stages in
-            life.
-          </p>
-      </Col>
-      <Col xs={24} md={5} offset={1}  className='nutrimap'>
-          <h2>Nutrimap</h2>
-          <p>
-            Nutrimap is a data driven nutritional analysis solution that
-            provides greater insight into the food we eat and design. This
-            solution gives institutions information into the nutrient content of
-            food products and their affect on individuals at various stages in
-            life.
-          </p>
-      </Col>
-       
-      </Row>
-
-
-      <Row justify='center' className='rowHero'>
       
+        </Row>
 
+        <Row>
+          <Col xs={24} md={15} offset={1} className='nutrimap'>
+            <motion.div className='solutionHeader'>
+            <GlobalOutlined  className='solutionIcon'/>
+            <h2>Global</h2>
+            </motion.div>
+            <p>
+              Nutrimap provide institutions operating within the healthcare and
+              food manufacturing industries with invaluable information about
+              the meals they plan and foods they design.
+            </p>
+          </Col>
+      
+        </Row>
+
+
+
+       
+
+       
+
+     
+{/* 
+      <Row justify='center' className='rowHero'>
         <Col xs={24} md={15} className='solutionTree'>
           <h1>Data Points</h1>
           <Tree.DirectoryTree
@@ -796,7 +902,7 @@ const Home: React.FC = () => {
           {contactForm()}
         </Col>
         <Button onClick={getData}>Api Test 11</Button>
-      </Row>
+      </Row> */}
     </React.Fragment>
   )
 }
