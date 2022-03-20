@@ -18,7 +18,6 @@ body {
 .heroSection {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 
@@ -37,14 +36,20 @@ body {
   /* {"name":"Black"} */
   ;
   font-size: 1rem;
-  letter-spacing: .5px;
+  letter-spacing: .1px;
   line-height: 1.7;
 }
 
 
 
 .rowHero{
-  margin:12rem 0rem 5rem 0rem ; 
+  margin:5rem 0rem 5rem 0rem ; 
+  
+}
+
+.rowSolution{
+  margin:2.5rem 0rem 2.5rem 0rem ; 
+  background-color: #b8862369;
   
 }
 
@@ -68,7 +73,7 @@ body {
     border-radius: 2px;
     font-family:'Poppins';
     color: rgba(0, 0, 0, 0.85);
-    background-color: #ffffff;
+    background-color: #b8862369;
     text-decoration: none;
     -webkit-filter: brightness(1);
     filter: brightness(1);
@@ -200,10 +205,9 @@ body {
 }
 
 
-.icon {
-  color: white;
-  font-size: 1.25rem;
-  margin-right: 5px;
+.heroIcon {
+  color: #b8862369;
+  font-size: 10rem;
 }
 
 .ant-btn-lg {
@@ -213,15 +217,18 @@ body {
   border-radius: 2px;
   border-color: #b88624;
 }
-span{
-  color:#b88623;
-  font-family:'Poppins',serif;
-  font-weight:700;
-  
+
+
+  .heroSpan{
+    font-family:'Poppins',serif;
+    text-decoration: underline;
+    text-decoration-color: #b8862369;
+    font-weight: 300;
+    
   }
 
   .formSpan{
-    color:#b88623;
+    color:#b8862369;
     font-family:'Poppins',serif;
     font-weight:500;
     
@@ -277,12 +284,20 @@ span{
     justify-content: center;
   }
 
+  .headerSolution {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    background-color: #dfcaa1;
+    margin-bottom: 1rem;
+  }
+
   .registration {
     display: flex;
     flex-direction: column;
     padding: 25px;
     background-color: #fafafa;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     justify-content: center;
   }
 
@@ -294,4 +309,13 @@ align-items:baseline
 
   .solutionIcon{
     font-size:1.5rem;
+  }
+
+  .ant-badge-status-text{
+    font-family:"Roboto";
+    font-size:1rem
+  }
+  .solutionDiv{
+    width:fit-content;
+    margin: 0px 1px 8px 1px;
   }

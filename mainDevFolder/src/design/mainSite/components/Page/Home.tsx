@@ -13,26 +13,32 @@ import {
   Statistic,
   Divider,
   Badge,
-  Popover
+  Popover,
+  Modal
 } from 'antd'
 import {
   ArrowDownOutlined,
+  ArrowLeftOutlined,
   ArrowRightOutlined,
   CheckCircleFilled,
   DownloadOutlined,
   ExperimentOutlined,
   GlobalOutlined,
   InfoCircleOutlined,
+  MobileTwoTone,
   PhoneOutlined,
   RightCircleOutlined,
+  SettingOutlined,
   SolutionOutlined,
   ToolOutlined
 } from '@ant-design/icons'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { createBrowserHistory } from "history";
+let history = createBrowserHistory();
 
 const Home: React.FC = () => {
-  const [isModalVisible, setIsModalVisible] = React.useState(false)
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [contact, setContact] = React.useState(false)
   const [text, setText] = React.useState('')
 
@@ -87,191 +93,13 @@ const Home: React.FC = () => {
     console.log(newData)
   }
 
-  const contactForm = () => {
-    switch (contact) {
-      case false:
-        return <p>{null}</p>
-        break
 
-      case true:
-        return (
-          <Row>
-            <Col xs={24}>
-              <Form
-                name='basic'
-                wrapperCol={{ span: 24 }}
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-                autoComplete='on'
-                size='small'
-                style={{ width: 'fit-content' }}
-              >
-                <Form.Item
-                  name='institution_name'
-                  label='Name'
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your instition's name."
-                    }
-                  ]}
-                >
-                  <Input placeholder='Enter name' className='input' />
-                </Form.Item>
-
-                <Form.Item
-                  name='institution_email'
-                  label='Email address'
-                  rules={[
-                    {
-                      required: true,
-                      message: 'Please input a valid email address.'
-                    }
-                  ]}
-                >
-                  <Input placeholder='Enter email address' className='input' />
-                </Form.Item>
-
-                <Form.Item
-                  name='institution_phone'
-                  label='Phone Number'
-                  rules={[
-                    {
-                      required: true,
-                      message: 'Please input a valid contact number.'
-                    }
-                  ]}
-                >
-                  <Input
-                    onChange={e => {
-                      setText(e.target.value)
-                    }}
-                    placeholder='Enter contact number'
-                    className='input'
-                  />
-                </Form.Item>
-                <Form.Item
-                  name='website'
-                  label='Web address'
-                  rules={[{ required: false }]}
-                >
-                  <Input placeholder='Enter web address' className='input' />
-                </Form.Item>
-                <Form.Item
-                  name='solution_request'
-                  label='Select Solutions'
-                  rules={[
-                    { required: true, message: 'Please select solutions!' }
-                  ]}
-                >
-                  <Select
-                    mode='multiple'
-                    className='input'
-                    placeholder='Select one or more solutions'
-                  >
-                    <Select.Option value='NLDV'>
-                      Nutritional Labeling DV
-                    </Select.Option>
-                    <Select.Option value='NLDV&DRI'>
-                      Dietary Reference Intakes
-                    </Select.Option>
-                  </Select>
-                </Form.Item>
-
-                <Form.Item
-                  name='menuItems_quantity'
-                  label='Select number of menu items'
-                  rules={[
-                    { required: true, message: 'Please select solutions!' }
-                  ]}
-                >
-                  <Select
-                    className='input'
-                    placeholder='How many items are on your menu?'
-                  >
-                    <Select.Option value='1-10'>1-10</Select.Option>
-                    <Select.Option value='11-20'>11-20</Select.Option>
-                    <Select.Option value='21-30'>21-30</Select.Option>
-                    <Select.Option value='31-40'>31-40</Select.Option>
-                    <Select.Option value='41-50'>41-50</Select.Option>
-                    <Select.Option value='50+'>50+</Select.Option>
-                  </Select>
-                </Form.Item>
-
-                <Form.Item
-                  name='frequencyOfChange'
-                  label='Menu rotations'
-                  rules={[
-                    { required: true, message: 'Please select solutions!' }
-                  ]}
-                >
-                  <Select
-                    className='input'
-                    placeholder='How often does your menu change?'
-                  >
-                    <Select.Option value='Daily'>Daily</Select.Option>
-                    <Select.Option value='Weekly'>Weekly</Select.Option>
-                    <Select.Option value='Monthly'>Monthly</Select.Option>
-                    <Select.Option value='Quarterly'>Quarterly</Select.Option>
-                    <Select.Option value='Annually'>Annually</Select.Option>
-                    <Select.Option value='Fixed'>Fixed</Select.Option>
-                  </Select>
-                </Form.Item>
-
-                <Form.Item
-                  name='agreement'
-                  valuePropName='checked'
-                  rules={[
-                    {
-                      validator: (_, value) =>
-                        value
-                          ? Promise.resolve()
-                          : Promise.reject(
-                              new Error('Please agree to terms of service.')
-                            )
-                    }
-                  ]}
-                >
-                  <Checkbox>
-                    I have read and understand the
-                    <motion.button
-                      whileHover={{ color: 'darkgoldenrod' }}
-                      type='button'
-                      className='terms'
-                      onClick={showModal}
-                    >
-                      terms of service
-                    </motion.button>
-                  </Checkbox>
-                </Form.Item>
-
-                <Form.Item>
-                  <motion.button
-                    className='button'
-                    whileHover={{
-                      border: '2px dashed darkgoldenrod',
-                      backgroundColor: 'darkgoldenrod'
-                    }}
-                    type='submit'
-                  >
-                    Submit
-                  </motion.button>
-                </Form.Item>
-                <h1>{text}</h1>
-              </Form>
-            </Col>
-          </Row>
-        )
-        break
-
-      default:
-        break
-    }
-  }
 
   const showModal = () => {
     setIsModalVisible(true)
+    
+    
+    
   }
 
   const handleOk = () => {
@@ -590,249 +418,217 @@ const Home: React.FC = () => {
   return (
     <React.Fragment>
       <Row justify='space-around' className='rowHero' gutter={[16, 64]}>
-        <Col xs={20} md={10} offset={1} className='heroSection'>
+        <Col xs={20} md={10}  className='heroSection'>
           <h1>
-            Solutions that benefit <span>communities</span> and{' '}
-            <span>institutions</span>.
+            Building advanced services that benefit <span className='heroSpan'>communities</span> and{' '}
+            <span className='heroSpan'>institutions</span>.
           </h1>
           <p>
-            We focuses on the development of institutional quality solutions
-            that help improve communities and industries. We target
-            environmental weakness effecting communites, engineer solutions that solve 
-            problem and finally bring our world changing
-            solutions to market.{' '}
+            <span className='kcm'>KCM</span> <span className='kcm'>INC</span> focuses on the development of institutional quality solutions and services 
+            that help improve the lives of indivduals , create inclusive markets and improve organizational performance.{' '}
           </p>
+         
         </Col>
         <Col
           xs={24}
           md={10}
-          offset={1}
+          
           className='heroSection'
           style={{
             flexFlow: 'wrap',
             justifyContent: 'space-evenly',
-            alignItems: 'end',
-            height: '315.94px'
+            alignItems:'center'
           }}
         >
-          <motion.div
-            style={{ width: '35px', borderRadius: '5px' }}
-            animate={{ height: '150px', backgroundColor: '#b88623' }}
-            transition={{ duration: 0.5 }}
-          ></motion.div>
-          <motion.div
-            style={{ width: '35px', borderRadius: '5px' }}
-            animate={{ height: '175px', backgroundColor: '#b88623' }}
-            transition={{ duration: 1 }}
-          ></motion.div>
-          <motion.div
-            style={{ width: '35px', borderRadius: '5px' }}
-            animate={{ height: '200px', backgroundColor: '#b88623' }}
-            transition={{ duration: 1.5 }}
-          ></motion.div>
-          <motion.div
-            style={{ width: '35px', borderRadius: '5px' }}
-            animate={{ height: '235px', backgroundColor: '#b88623' }}
-            transition={{ duration: 2 }}
-          ></motion.div>
-          <motion.div
-            style={{ width: '35px', borderRadius: '5px' }}
-            animate={{ height: '250px', backgroundColor: '#b88623' }}
-            transition={{ duration: 2.5 }}
-          ></motion.div>
-          <motion.div
-            style={{ width: '35px', borderRadius: '5px' }}
-            animate={{ height: '275px', backgroundColor: '#b88623' }}
-            transition={{ duration: 3 }}
-          ></motion.div>
+
+          
+          <SettingOutlined className='heroIcon'/>
+        </Col>
+      </Row>
+
+      <Row className='rowSolution'>
+        <Col xs={24} md={20}   className='headerSolution'>
+          <h1>Services</h1>
+          <p>
+            Innovative solutions designed to change the way businesses interact
+            with communities.
+          </p>
+          <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={showModal}><Badge color="white" text={""} /><Link to='/nutrimap'>NutriMap - Healthcare Service</Link></motion.div>
+          <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={()=>{console.log('heelo')}}><Badge color="white" text={"IntraVest - Finance and Security Service"} /></motion.div>
+          <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={()=>{console.log('heelo')}}><Badge color="white" text={"Aglo - Logistic Service"} /></motion.div>
+          <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={()=>{console.log('heelo')}}><Badge color="white" text={"LoFarms - Agriculture Sourcing Service"} /></motion.div>
+        </Col>
+      </Row>
+
+      <Row className='rowHero'>
+        <Col xs={24} md={20}  className='nutrimap'>
+          <h1>Our clients</h1>
+          <motion.div className='solutionDiv' ><Badge color="#b8862369" text={"IntraVest - Finance and Security Service"} /></motion.div>
+
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={24} md={15} offset={1} className='nutrimap'>
+          <motion.div className='solutionHeader'>
+            <ExperimentOutlined className='solutionIcon' />
+            <h2>Nutrimap</h2>
+          </motion.div>
+
+          <p>
+            Nutrimap provide institutions operating within the healthcare and
+            food manufacturing industries with invaluable information about the
+            meals they plan and foods they design.
+          </p>
+          <div>
+            <Statistic title='Number of elements and vitamins' value={'20+'} />
+            <Statistic
+              title='Number of macronutrients including water observed'
+              value={'7'}
+            />
+            <Statistic
+              title='Number of life-stage groups observed'
+              value={'6'}
+            />
+          </div>
+        </Col>
+
+        <Col xs={24} md={5} offset={1} className='nutrimap'>
+          <h2>Features:</h2>
+
+          <motion.p whileHover={{ scale: 1.1 }}>
+            Nutrient Report{' '}
+            <Popover
+              content={
+                <p className='popover'>
+                  Identify micro and macro nutrient varialbe within a given
+                  product.
+                </p>
+              }
+              title='Micronutrients'
+              trigger='click'
+            >
+              <InfoCircleOutlined />
+            </Popover>{' '}
+          </motion.p>
+          <motion.p whileHover={{ scale: 1.1 }}>
+            Nutrient Sourcing{' '}
+            <Popover
+              content={
+                <p className='popover'>
+                  Locate what maufacurers, ingredients and amounts effect a
+                  products nutrient profile.
+                </p>
+              }
+              title='Macronutrients'
+              trigger='click'
+            >
+              <InfoCircleOutlined />
+            </Popover>{' '}
+          </motion.p>
+          <motion.p whileHover={{ scale: 1.1 }}>
+            Life stage analysis{' '}
+            <Popover
+              content={
+                <p className='popover'>
+                  A comparative analysis that provides indentifying information
+                  on nutrients levels and how they impact various life-stage
+                  groups.{' '}
+                </p>
+              }
+              title='Life Stage'
+              trigger='click'
+            >
+              <InfoCircleOutlined />
+            </Popover>{' '}
+          </motion.p>
+          <Link to='/nutrimap'>
+            <motion.button
+              className='button'
+              whileHover={{ backgroundColor: '#b8862369' }}
+              transition={{ duration: 0 }}
+            >
+              Onboarding
+            </motion.button>{' '}
+          </Link>
         </Col>
       </Row>
 
       <Row className='rowHero'>
         <Col xs={24} md={20} offset={1} className='nutrimap'>
-          <h1>
-            Solutions
-          </h1>
+          <h1>Who we are.</h1>
           <p>
             Innovative solutions designed to change the way businesses interact
             with consumers.
           </p>
         </Col>
-        </Row>
+      </Row>
 
-        <Row>
-          <Col xs={24} md={15} offset={1} className='nutrimap'>
-            <motion.div className='solutionHeader'>
-            <ExperimentOutlined  className='solutionIcon'/>
-            <h2>Nutrimap</h2>
-
-            </motion.div>
-
-            <p>
-              Nutrimap provide institutions operating within the healthcare and
-              food manufacturing industries with invaluable information about
-              the meals they plan and foods they design.
-            </p>
-            <div>
-              <Statistic title='Number of elements and vitamins' value={'20+'} />
-              <Statistic
-                title='Number of macronutrients including water observed'
-                value={'7'}
-              />
-               <Statistic
-                title='Number of life-stage groups observed'
-                value={'6'}
-              />
-            </div>
-          </Col>
-
-          <Col xs={24} md={5} offset={1} className='nutrimap'>
-            <h2>Features:</h2>
-
-            <motion.p whileHover={{ scale: 1.1 }}>
-              Nutrient Report{' '}
-              <Popover
-                content={
-                  <p className='popover'>
-                    Identify micro and macro nutrient varialbe within a given product.
-                  </p>
-                }
-                title='Micronutrients'
-                trigger='click'
-              >
-                <InfoCircleOutlined />
-              </Popover>{' '}
-            </motion.p>
-            <motion.p whileHover={{ scale: 1.1 }}>
-              Nutrient Sourcing{' '}
-              <Popover
-                content={
-                  <p className='popover'>
-                    Locate what maufacurers, ingredients and amounts effect a
-                    products nutrient profile.
-                  </p>
-                }
-                title='Macronutrients'
-                trigger='click'
-              >
-                <InfoCircleOutlined />
-              </Popover>{' '}
-            </motion.p>
-            <motion.p whileHover={{ scale: 1.1 }}>
-              Life stage analysis{' '}
-              <Popover
-                content={
-                  <p className='popover'>
-                    A comparative analysis that provides 
-                    indentifying information on nutrients levels and how 
-                    they impact various life-stage groups.{' '}
-                  </p>
-                }
-                title='Life Stage'
-                trigger='click'
-              >
-                <InfoCircleOutlined />
-              </Popover>{' '}
-            </motion.p>
-            <Link to='/nutrimap'>
-              <motion.button
-                className='button'
-                whileHover={{ backgroundColor: '#b8862369' }}
-                transition={{ duration: 0 }}
-              >
-                Onboarding
-              </motion.button>{' '}
-            </Link>
-          </Col>
-        </Row>
-
-        <Row className='rowHero'>
-        <Col xs={24} md={20} offset={1} className='nutrimap'>
-          <h1>
-            Who we are.
-          </h1>
-          <p>
-            Innovative solutions designed to change the way businesses interact
-            with consumers.
-          </p>
-        </Col>
-        </Row>
-
-        <Row>
-          <Col xs={24} md={6} offset={1} className='nutrimap'>
-            <motion.div className='solutionHeader'>
-            <SolutionOutlined  className='solutionIcon'/>
+      <Row>
+        <Col xs={24} md={6} offset={1} className='nutrimap'>
+          <motion.div className='solutionHeader'>
+            <SolutionOutlined className='solutionIcon' />
             <h2>Well-being</h2>
-            </motion.div>
-            <p>
-              Nutrimap provide institutions operating within the healthcare and
-              food manufacturing industries with invaluable information about
-              the meals they plan and foods they design.
-            </p>
-          </Col>
-          <Col xs={24} md={6} offset={1} className='nutrimap'>
-            <motion.div className='solutionHeader'>
-            <ToolOutlined  className='solutionIcon'/>
+          </motion.div>
+          <p>
+            Nutrimap provide institutions operating within the healthcare and
+            food manufacturing industries with invaluable information about the
+            meals they plan and foods they design.
+          </p>
+        </Col>
+        <Col xs={24} md={6} offset={1} className='nutrimap'>
+          <motion.div className='solutionHeader'>
+            <ToolOutlined className='solutionIcon' />
             <h2>Engineering</h2>
-            </motion.div>
-            <p>
-              Nutrimap provide institutions operating within the healthcare and
-              food manufacturing industries with invaluable information about
-              the meals they plan and foods they design.
-            </p>
-          </Col>
-          <Col xs={24} md={6} offset={1} className='nutrimap'>
-            <motion.div className='solutionHeader'>
-            <GlobalOutlined  className='solutionIcon'/>
+          </motion.div>
+          <p>
+            Nutrimap provide institutions operating within the healthcare and
+            food manufacturing industries with invaluable information about the
+            meals they plan and foods they design.
+          </p>
+        </Col>
+        <Col xs={24} md={6} offset={1} className='nutrimap'>
+          <motion.div className='solutionHeader'>
+            <GlobalOutlined className='solutionIcon' />
             <h2>Global</h2>
-            </motion.div>
-            <p>
-              Nutrimap provide institutions operating within the healthcare and
-              food manufacturing industries with invaluable information about
-              the meals they plan and foods they design.
-            </p>
-          </Col>
-        </Row>
+          </motion.div>
+          <p>
+            Nutrimap provide institutions operating within the healthcare and
+            food manufacturing industries with invaluable information about the
+            meals they plan and foods they design.
+          </p>
+        </Col>
+      </Row>
 
-        <Row>
-          <Col xs={24} md={15} offset={1} className='nutrimap'>
-            <motion.div className='solutionHeader'>
-            <ToolOutlined  className='solutionIcon'/>
+      <Row>
+        <Col xs={24} md={15} offset={1} className='nutrimap'>
+          <motion.div className='solutionHeader'>
+            <ToolOutlined className='solutionIcon' />
             <h2>Engineering</h2>
-            </motion.div>
-            <p>
-              Nutrimap provide institutions operating within the healthcare and
-              food manufacturing industries with invaluable information about
-              the meals they plan and foods they design.
-            </p>
-          </Col>
-         
-      
-        </Row>
+          </motion.div>
+          <p>
+            Nutrimap provide institutions operating within the healthcare and
+            food manufacturing industries with invaluable information about the
+            meals they plan and foods they design.
+          </p>
+        </Col>
+      </Row>
 
-        <Row>
-          <Col xs={24} md={15} offset={1} className='nutrimap'>
-            <motion.div className='solutionHeader'>
-            <GlobalOutlined  className='solutionIcon'/>
+      <Row>
+        <Col xs={24} md={15} offset={1} className='nutrimap'>
+          <motion.div className='solutionHeader'>
+            <GlobalOutlined className='solutionIcon' />
             <h2>Global</h2>
-            </motion.div>
-            <p>
-              Nutrimap provide institutions operating within the healthcare and
-              food manufacturing industries with invaluable information about
-              the meals they plan and foods they design.
-            </p>
-          </Col>
-      
-        </Row>
+          </motion.div>
+          <p>
+            Nutrimap provide institutions operating within the healthcare and
+            food manufacturing industries with invaluable information about the
+            meals they plan and foods they design.
+          </p>
+        </Col>
+      </Row>
 
-
-
-       
-
-       
-
-     
-{/* 
+      {/* 
       <Row justify='center' className='rowHero'>
         <Col xs={24} md={15} className='solutionTree'>
           <h1>Data Points</h1>

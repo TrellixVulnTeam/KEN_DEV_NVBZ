@@ -80,7 +80,7 @@ const configClient = {
                             lessOptions: {
                                 javascriptEnabled: true,
                                 modifyVars: {
-                                    'primary-color': '#b88623 ',
+                                    'primary-color': '#b8862369 ',
                                     'link-color': '#bfbfbf',
                                     'border-radius-base': '2px'
 
