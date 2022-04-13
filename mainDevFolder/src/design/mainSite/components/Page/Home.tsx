@@ -20,6 +20,7 @@ import {
   ArrowDownOutlined,
   ArrowLeftOutlined,
   ArrowRightOutlined,
+  CaretRightOutlined,
   CheckCircleFilled,
   DownloadOutlined,
   ExperimentOutlined,
@@ -417,14 +418,14 @@ const Home: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Row justify='space-around' className='rowHero' gutter={[16, 64]}>
-        <Col xs={20} md={10}  className='heroSection'>
+      <Row justify='space-around' className='rowHero' gutter={[0, 16]}>
+        <Col xs={22} md={10}  className='registration'>
           <h1>
-            Building advanced services that benefit <span className='heroSpan'>communities</span> and{' '}
-            <span className='heroSpan'>institutions</span>.
+            Building advanced services that benefit communities and{' '}
+           institutions<span>.</span>
           </h1>
           <p>
-            <span className='kcm'>KCM</span> <span className='kcm'>INC</span> focuses on the development of institutional quality solutions and services 
+            Focuses on the development of institutional quality solutions and services 
             that help improve the lives of indivduals , create inclusive markets and improve organizational performance.{' '}
           </p>
          
@@ -447,13 +448,13 @@ const Home: React.FC = () => {
       </Row>
 
       <Row className='rowSolution'>
-        <Col xs={24} md={20}   className='headerSolution'>
+        <Col xs={24} md={20} push={1} className='headerSolution'>
           <h1>Services</h1>
           <p>
             Innovative solutions designed to change the way businesses interact
             with communities.
           </p>
-          <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={showModal}><Badge color="white" text={""} /><Link to='/nutrimap'>NutriMap - Healthcare Service</Link></motion.div>
+          <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={showModal}><Link to='/nutrimap'><motion.div style={{display:'-webkit-inline-box'}} initial={{opacity:0}}  whileHover={{opacity:1}} className='hoverIcon'><CaretRightOutlined /></motion.div>NutriMap - Healthcare Service</Link></motion.div>
           <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={()=>{console.log('heelo')}}><Badge color="white" text={"IntraVest - Finance and Security Service"} /></motion.div>
           <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={()=>{console.log('heelo')}}><Badge color="white" text={"Aglo - Logistic Service"} /></motion.div>
           <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={()=>{console.log('heelo')}}><Badge color="white" text={"LoFarms - Agriculture Sourcing Service"} /></motion.div>

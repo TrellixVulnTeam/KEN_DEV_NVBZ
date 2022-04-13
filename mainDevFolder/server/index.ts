@@ -9,7 +9,7 @@ import 'dotenv/config'
 
 const app = express()
 app.use(Nutrientmap)
-app.use(express.static('public'));
+app.use(express.static('public'))
 app.use(cors())
 app.use(express.json())
 app.set('trust proxy', true)
@@ -31,20 +31,74 @@ const newUse = app.use((req, res, next) => {
   next()
 })
 
-app.post('/get', (req, res, error) => {
-  // const data = await fetch(
-  //   `https://api.nal.usda.gov/fdc/v1/foods/search?query=${"McDONALD'S, Double Cheeseburger"}&pageSize=11&api_key=${
-  //     process.env.API_KEY
-  //   }`
-  // )
-  // const newData = await data.json()
-  // console.log(newData)
-  // res.json(newData)
-  // if (error) {
-  //   console.log(error)
-  // }
-  console.log(req.body)
-  res.json(req.body)
+let foodsArray:[];
+
+
+app.post('/nutritionalData', async (req, res, error) => {
+  const data = await fetch(
+    `https://api.nal.usda.gov/fdc/v1/foods/search?query=${req.body.foodSelection}&pageSize=4&dataType=Foundation&api_key=${process.env.API_KEY}`
+  )
+  const foodsQuery = await data.json()
+
+  const foodsArray = await foodsQuery.foods.map((i: any) => {
+    return i
+  })
+  let arraySort = foodsArray[0].foodNutrients.sort((a: any, b: any) => {
+    const nameA = a.nutrientName.toUpperCase() // ignore upper and lowercase
+    const nameB = b.nutrientName.toUpperCase() // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1
+    }
+    if (nameA > nameB) {
+      return 1
+    }
+
+    // names must be equal
+    return 0
+  })
+
+
+
+  const nutrientProfile: [] = arraySort.map((data: any, index: number) => {
+    if (
+      data.nutrientId == 1003 ||
+      data.nutrientId == 1005 ||
+      data.nutrientId == 1079 ||
+      data.nutrientId == 1109 ||
+      data.nutrientId == 1114 ||
+      data.nutrientId == 1162 ||
+      data.nutrientId == 1090 ||
+      data.nutrientId == 1087 ||
+      data.nutrientId == 1008
+
+    ) {
+      return data
+    }
+  })
+  let selectedNutrients = nutrientProfile.filter(
+    index => index !== undefined || null
+  )
+
+  res.json([foodsArray[0].description, selectedNutrients])
+
+})
+
+
+app.post('/testRoute', async (req, res) => {
+  
+  
+  const data = await fetch(
+    `https://api.nal.usda.gov/fdc/v1/foods/search?query=${`Hood`}&dataType=Branded&api_key=${process.env.API_KEY}`
+  )
+  const foodsQuery = await data.json()
+
+  // const foodsArray = await foodsQuery.foods.map((i: any) => {
+  //   return i
+  // })
+  
+
+  res.json(foodsQuery)
+
 })
 
 const PORT = process.env.PORT || 8080
