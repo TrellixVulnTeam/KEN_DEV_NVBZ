@@ -47,9 +47,14 @@ const App = () => {
             <a href='#solutions'>Solutions </a>
           </Menu.Item>
           <Menu.Item
-            key='faq'
+            key='stakeholders'
           >
-            <a href='#faq'>FAQ </a>
+            <a href='#stakeholder'>Stakeholders </a>
+          </Menu.Item>
+          <Menu.Item
+            key='company'
+          >
+            <a href='#company'>Company</a>
           </Menu.Item>
           <Menu.Item key='contact'>
             <Button icon={<MessageOutlined style={{ color: '#b88623' }} />}>
@@ -73,6 +78,7 @@ const App = () => {
             ></Button>
           </Menu.Item>
         </Menu>
+        
       </Header>
       <Content className='site-layout'>
         <Drawer
