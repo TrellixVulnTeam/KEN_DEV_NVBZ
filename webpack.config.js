@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 const nodeExternals = require('webpack-node-externals')
 
-// const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == 'production'
 
@@ -27,12 +26,11 @@ const configClient = {
         compress: true,
         open: true,
         hot: true,
-        port: 3000,
+        port: 4000,
         historyApiFallback: true
     },
     plugins: [
         new HtmlWebpackPlugin({ template: 'dist_client/index.html', hash: false })
-        // new StylelintPlugin()
     ],
 
     module: {
