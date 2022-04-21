@@ -80,7 +80,7 @@
         "watch": "webpack --mode=development --watch ",
         "serve": "webpack serve",
         "node": "nodemon dist_server/index.js",
-        "dev": "yarn run node & yarn run serve"
+        "dev": "yarn run serve & yarn run node & yarn run watch"
     },
     "eslintConfig": {
         "extends": [
@@ -114,7 +114,7 @@
         "@typescript-eslint/parser": "^4.31.2",
         "@webpack-cli/generators": "^1.1.0",
         "install": "^0.13.0",
-        "nodemon": "^2.0.13",
+        "nodemon": "^2.0.15",
         "npm-run-all": "^4.1.5",
         "prettier": "^2.4.1",
         "webpack-cli": "^4.8.0",

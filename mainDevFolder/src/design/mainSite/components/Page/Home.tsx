@@ -135,7 +135,7 @@ const Home: React.FC = () => {
           <p className = 'headerParagraph'>
             <span className='atHeader'>At</span>
             <span className='spanHeader'> KCM INC </span>
-            we design enterprise level solutions f that help optimize stakeholder
+            we design enterprise level solutions that help optimize stakeholder
             value throughout various global market sectors.
           </p>
           <motion.div></motion.div>
@@ -178,6 +178,7 @@ const Home: React.FC = () => {
                       <motion.div>
                         <h4>How it works</h4>
                       </motion.div>
+                      
                       <div>
                         <Statistic
                           title='Number of elements and vitamins'

@@ -12,6 +12,7 @@ import {
   TwitterOutlined
 } from '@ant-design/icons';
 import Form_1 from './design/mainSite/components/Page/Form_1';
+import { motion, MotionConfig } from 'framer-motion';
 
 const { Header, Content, Footer } = Layout
 
@@ -57,9 +58,8 @@ const App = () => {
             <a href='#company'>Company</a>
           </Menu.Item>
           <Menu.Item key='contact'>
-            <Button icon={<MessageOutlined style={{ color: '#b88623' }} />}>
-              Contact Us
-            </Button>
+            <motion.button className='button'>Contact Us</motion.button>
+       
           </Menu.Item>
         </Menu>
         <Menu mode='horizontal' className='smallDisplay'>
