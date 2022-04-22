@@ -69,7 +69,7 @@ app.post('/nutritionalData', async (req, res, error) => {
       data.nutrientId == 1162 ||
       data.nutrientId == 1090 ||
       data.nutrientId == 1087 ||
-      data.nutrientId == 1008
+      data.nutrientId == 100
 
     ) {
       return data
@@ -84,20 +84,20 @@ app.post('/nutritionalData', async (req, res, error) => {
 })
 
 
-app.post('/testRoute', async (req, res) => {
+app.get('/test', async (req, res) => {
   
   
-  const data = await fetch(
-    `https://api.nal.usda.gov/fdc/v1/foods/search?query=${`Hood`}&dataType=Branded&api_key=${process.env.API_KEY}`
-  )
-  const foodsQuery = await data.json()
+  // const data = await fetch(
+  //   `https://api.nal.usda.gov/fdc/v1/foods/search?query=${`Hood`}&dataType=Branded&api_key=${process.env.API_KEY}`
+  // )
+  // const foodsQuery = await data.json()
 
   // const foodsArray = await foodsQuery.foods.map((i: any) => {
   //   return i
   // })
   
 
-  res.json(foodsQuery)
+  res.sendStatus(200)
 
 })
 

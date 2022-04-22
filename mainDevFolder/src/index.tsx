@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
-import 'antd/dist/antd.less'
+import 'antd/dist/antd.variable.less'
 import './design/styles/index.less'
 
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';

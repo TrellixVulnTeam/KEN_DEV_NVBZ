@@ -38,6 +38,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { Image } from 'antd'
+import { ModuleGraphConnection } from 'webpack'
 
 let history = createBrowserHistory()
 
@@ -131,9 +132,8 @@ const Home: React.FC = () => {
     <React.Fragment>
       <Row justify='space-around' className='rowHero' gutter={[0, 16]}>
         <Col xs={22} md={18} className='registration'>
-          <span>-</span>
-          <h1>Solutions that serve the general public and institutions.</h1>
-          <p>
+          <h1>Solutions designed to benefit the general public and institutions.</h1>
+          <p className = 'headerParagraph'>
             <span className='atHeader'>At</span>
             <span className='spanHeader'> KCM INC </span>
             we design enterprise level solutions that help optimize stakeholder
@@ -164,30 +164,47 @@ const Home: React.FC = () => {
             <span className='sectionStartLetter'>S</span>olutions
           </h1>
           <p className='solutionsParagraph'>
-            Innovative solutions designed to change the way businesses interact
-            with communities.
+            We offer a suite of high impact solutions that help enterprises better serve their customers and improve the lives of communities they interact with. 
           </p>
-
-          <Collapse ghost>
-            <Collapse.Panel header='Healthcare' key='1'>
-              <Collapse>
-                <Collapse.Panel header='Nutrimap' key='1'>
-                  <Row>
-                    <Col xs={22} md={24} className='nutrimap'>
+          <Row className='solutionInfo' justify='space-between'>
+                    <Col xs={22} md={12} className='nutrimap'>
                       <motion.div className='solutionHeader'>
-                      <h4>
-                        What is Nutrimap?
-                      </h4>
-                      <p>
-                      Nutrimap is a nutritional analysis system 
-                      designed to create healthier communities 
-                      and more knowledgeable enterprises by analyzing 
-                      the nutritional content of single and multi 
-                      component food items. 
-                      </p>
+                        <h2>Nutrimap</h2>
                       </motion.div>
 
-                     
+                      <p className='pNutrimap'>
+                        Nutrimap at its core is a nutritional analysis system. However, unlike most nutritional analysis solutions - which only give the nutritional 
+                        value of an item - Nutrimap provides a deep full-cycle analysis.  
+                      </p>
+                   
+                      <motion.div>
+                        
+                      </motion.div>
+                      <motion.table>
+                        <motion.thead>
+                          <motion.tr>
+                            <motion.th>
+                            <h4>How it works</h4>
+                            </motion.th>
+                           
+                          </motion.tr>
+                          
+                        </motion.thead>
+                        <motion.tbody>
+                          <motion.tr>
+                            <motion.td>
+                              <p>dello</p>
+                            </motion.td>
+                           
+                          </motion.tr>
+                          <motion.tr>
+                            <motion.td>
+                            <p>dello</p>
+                            </motion.td>
+                           
+                          </motion.tr>
+                        </motion.tbody>
+                      </motion.table>
                       <div>
                         <Statistic
                           title='Number of elements and vitamins'
@@ -204,7 +221,7 @@ const Home: React.FC = () => {
                       </div>
                     </Col>
 
-                    {/* <Col xs={24} md={5}  className='nutrimap'>
+                    <Col xs={24} md={8}  className='nutrimap'>
                       <h2>Features:</h2>
 
                       <motion.p whileHover={{ scale: 1.1 }}>
@@ -262,65 +279,10 @@ const Home: React.FC = () => {
                           Onboarding
                         </motion.button>{' '}
                       </Link>
-                    </Col> */}
+                    </Col> 
                   </Row>
-                  <Collapse>
-                    <Collapse.Panel header='Nutrimap' key='1'>
-                      <p>
-                        NutriMap is a nutritional analysis service developed to
-                        help food manufacturers design healthier products and
-                        healthcare institutions create better nutritional plans.
-                      </p>
-                    </Collapse.Panel>
-                  </Collapse>
-                </Collapse.Panel>
-              </Collapse>
-            </Collapse.Panel>
-          </Collapse>
-          <Collapse ghost>
-            <Collapse.Panel header='Finance' key='1'>
-              <Collapse>
-                <Collapse.Panel header='Intravest' key='1'>
-                  <p>
-                    NutriMap is a nutritional analysis service developed to help
-                    food manufacturers design healthier products and healthcare
-                    institutions create better nutritional plans.
-                  </p>
-                  <Collapse>
-                    <Collapse.Panel header='Nutrimap' key='1'>
-                      <p>
-                        NutriMap is a nutritional analysis service developed to
-                        help food manufacturers design healthier products and
-                        healthcare institutions create better nutritional plans.
-                      </p>
-                    </Collapse.Panel>
-                  </Collapse>
-                </Collapse.Panel>
-              </Collapse>
-            </Collapse.Panel>
-          </Collapse>
-          <Collapse ghost>
-            <Collapse.Panel header='Logistics' key='1'>
-              <Collapse>
-                <Collapse.Panel header='Aglo' key='1'>
-                  <p>
-                    NutriMap is a nutritional analysis service developed to help
-                    food manufacturers design healthier products and healthcare
-                    institutions create better nutritional plans.
-                  </p>
-                  <Collapse>
-                    <Collapse.Panel header='Nutrimap' key='1'>
-                      <p>
-                        NutriMap is a nutritional analysis service developed to
-                        help food manufacturers design healthier products and
-                        healthcare institutions create better nutritional plans.
-                      </p>
-                    </Collapse.Panel>
-                  </Collapse>
-                </Collapse.Panel>
-              </Collapse>
-            </Collapse.Panel>
-          </Collapse>
+
+          
 
           {/* <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={()=>{console.log('heelo')}}><Badge color="white" text={"IntraVest - Finance and Security Service"} /></motion.div>
           <motion.div className='solutionDiv' whileHover={{fontWeight:'500',cursor:'pointer'}} whileTap={{fontWeight:'500',borderBottom:'1px solid black'}} onClick={()=>{console.log('heelo')}}><Badge color="white" text={"Aglo - Logistic Service"} /></motion.div>
