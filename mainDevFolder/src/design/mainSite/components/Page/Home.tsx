@@ -38,6 +38,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { Image } from 'antd'
+import { ModuleGraphConnection } from 'webpack'
 
 let history = createBrowserHistory()
 
@@ -165,8 +166,8 @@ const Home: React.FC = () => {
           <p className='solutionsParagraph'>
             We offer a suite of high impact solutions that help enterprises better serve their customers and improve the lives of communities they interact with. 
           </p>
-          <Row className='solutionInfo'>
-                    <Col xs={22} md={18} className='nutrimap'>
+          <Row className='solutionInfo' justify='space-between'>
+                    <Col xs={22} md={12} className='nutrimap'>
                       <motion.div className='solutionHeader'>
                         <h2>Nutrimap</h2>
                       </motion.div>
@@ -175,10 +176,35 @@ const Home: React.FC = () => {
                         Nutrimap at its core is a nutritional analysis system. However, unlike most nutritional analysis solutions - which only give the nutritional 
                         value of an item - Nutrimap provides a deep full-cycle analysis.  
                       </p>
+                   
                       <motion.div>
-                        <h4>How it works</h4>
+                        
                       </motion.div>
-                      
+                      <motion.table>
+                        <motion.thead>
+                          <motion.tr>
+                            <motion.th>
+                            <h4>How it works</h4>
+                            </motion.th>
+                           
+                          </motion.tr>
+                          
+                        </motion.thead>
+                        <motion.tbody>
+                          <motion.tr>
+                            <motion.td>
+                              <p>dello</p>
+                            </motion.td>
+                           
+                          </motion.tr>
+                          <motion.tr>
+                            <motion.td>
+                            <p>dello</p>
+                            </motion.td>
+                           
+                          </motion.tr>
+                        </motion.tbody>
+                      </motion.table>
                       <div>
                         <Statistic
                           title='Number of elements and vitamins'
@@ -195,7 +221,7 @@ const Home: React.FC = () => {
                       </div>
                     </Col>
 
-                    <Col xs={24} md={5}  className='nutrimap'>
+                    <Col xs={24} md={8}  className='nutrimap'>
                       <h2>Features:</h2>
 
                       <motion.p whileHover={{ scale: 1.1 }}>
