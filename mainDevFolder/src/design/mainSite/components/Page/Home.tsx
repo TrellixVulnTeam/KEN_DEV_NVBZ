@@ -173,18 +173,21 @@ const Home: React.FC = () => {
               <Collapse>
                 <Collapse.Panel header='Nutrimap' key='1'>
                   <Row>
-                    <Col xs={24} md={15} className='nutrimap'>
+                    <Col xs={22} md={24} className='nutrimap'>
                       <motion.div className='solutionHeader'>
-                        <ExperimentOutlined className='solutionIcon' />
-                        <h2>Nutrimap</h2>
+                      <h4>
+                        What is Nutrimap?
+                      </h4>
+                      <p>
+                      Nutrimap is a nutritional analysis system 
+                      designed to create healthier communities 
+                      and more knowledgeable enterprises by analyzing 
+                      the nutritional content of single and multi 
+                      component food items. 
+                      </p>
                       </motion.div>
 
-                      <p>
-                        Nutrimap provide institutions operating within the
-                        healthcare and food manufacturing industries with
-                        invaluable information about the meals they plan and
-                        foods they design.
-                      </p>
+                     
                       <div>
                         <Statistic
                           title='Number of elements and vitamins'
@@ -201,7 +204,7 @@ const Home: React.FC = () => {
                       </div>
                     </Col>
 
-                    <Col xs={24} md={5} offset={1} className='nutrimap'>
+                    {/* <Col xs={24} md={5}  className='nutrimap'>
                       <h2>Features:</h2>
 
                       <motion.p whileHover={{ scale: 1.1 }}>
@@ -259,7 +262,7 @@ const Home: React.FC = () => {
                           Onboarding
                         </motion.button>{' '}
                       </Link>
-                    </Col>
+                    </Col> */}
                   </Row>
                   <Collapse>
                     <Collapse.Panel header='Nutrimap' key='1'>
