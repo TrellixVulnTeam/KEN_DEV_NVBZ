@@ -131,7 +131,7 @@ const Home: React.FC = () => {
   return (
     <React.Fragment>
       <Row justify='space-around' className='rowHero' gutter={[0, 16]}>
-        <Col xs={22} md={8} className='registration'>
+        <Col xs={22} md={20} className='registration'>
           <h1>Solutions designed to benefit the general public and institutions.</h1>
           <p className='headerParagraph'>
             <span className='atHeader'>At</span>
@@ -139,23 +139,12 @@ const Home: React.FC = () => {
             we design enterprise level solutions that help optimize stakeholder
             value throughout various global market sectors.
           </p>
-          <motion.button className='button'>
+          <motion.button className='button' whileHover={{backgroundColor:'white'}} transition={{duration:.1}}>
             Services Division
           </motion.button>
           <motion.div></motion.div>
         </Col>
-        <Col xs={22} md={8}
-
-          className='registration'
-          style={{
-            flexFlow: 'wrap',
-            alignItems: 'center'
-          }}
-        >
-
-
-          <SettingOutlined className='heroIcon' />
-        </Col>
+       
       </Row>
 
       <Row justify='space-around' className='rowHero' gutter={[0, 16]} >
