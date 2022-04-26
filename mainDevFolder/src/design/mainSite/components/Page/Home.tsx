@@ -153,13 +153,13 @@ const Home: React.FC = () => {
             <span className='sectionStartLetter'>S</span>olutions
           </h1>
           <p className='solutionsParagraph'>
-            We offer a suite of high impact solutions that help enterprises better
-            serve their customers and improve the lives of communities they interact with.
-          </p>
+            We offer a suite of high impact solutions that help
+             organizations scale and innovate more impactfully.
+          </p><motion.span>.</motion.span>
         </Col>
         <Col xs={20} md={8} className='nutrimap'>
           <motion.div className='solutionsDiv'>
-            <Collapse defaultActiveKey={['1']}
+            {/* <Collapse defaultActiveKey={['1']}
               expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
               onChange={callback} ghost>
               <Collapse.Panel
@@ -226,11 +226,23 @@ const Home: React.FC = () => {
               <Collapse.Panel header="AgLo" key="4">
                 <p>AgLo</p>
               </Collapse.Panel>
-            </Collapse>
+            </Collapse> */}
 
           </motion.div>
 
         </Col>
+        <Col xs={22} md={20} className='registration'>
+          <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
+          <p className='headerParagraph'>
+            What is Nutrimap?
+          </p>
+          <p>Nutrimap is a nutritional analysis system designed for the consumer and healthcare sectors. </p>
+          <motion.button className='button' whileHover={{backgroundColor:'white'}} transition={{duration:.1}}>
+            Services Division
+          </motion.button>
+          <motion.div></motion.div>
+        </Col>
+        
       </Row>
 
 
