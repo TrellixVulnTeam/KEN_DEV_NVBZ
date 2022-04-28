@@ -29,6 +29,7 @@ import {
   InfoCircleOutlined,
   MobileTwoTone,
   PhoneOutlined,
+  PieChartFilled,
   RightCircleOutlined,
   SettingOutlined,
   SolutionOutlined,
@@ -148,7 +149,7 @@ const Home: React.FC = () => {
       </Row>
 
       <Row justify='space-around' className='rowHero' gutter={[0, 16]} >
-        <Col xs={22} md={8} className='registration'>
+        <Col xs={22} md={19} className='paragraphSectionIntro'>
           <h1>
             <span className='sectionStartLetter'>S</span>olutions
           </h1>
@@ -157,9 +158,10 @@ const Home: React.FC = () => {
              organizations scale and innovate more impactfully.
           </p><motion.span>.</motion.span>
         </Col>
-        <Col xs={20} md={8} className='nutrimap'>
+       
+        {/* <Col xs={20} md={8} className='nutrimap'>
           <motion.div className='solutionsDiv'>
-            {/* <Collapse defaultActiveKey={['1']}
+            <Collapse defaultActiveKey={['1']}
               expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
               onChange={callback} ghost>
               <Collapse.Panel
@@ -226,12 +228,36 @@ const Home: React.FC = () => {
               <Collapse.Panel header="AgLo" key="4">
                 <p>AgLo</p>
               </Collapse.Panel>
-            </Collapse> */}
+            </Collapse>
 
           </motion.div>
 
+        </Col> */}
+      <Row justify='space-around' gutter = {[0,50]} >
+        <Col xs={22} md={18} className='solutionBody'>
+          <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
+          <p className='headerParagraph'>
+            What is Nutrimap?
+          </p>
+          <p>Nutrimap is a nutritional analysis system designed for the consumer and healthcare sectors. </p>
+          <motion.button className='button' whileHover={{backgroundColor:'white'}} transition={{duration:.1}}>
+            Services Division
+          </motion.button>
+          <motion.div></motion.div>
         </Col>
-        <Col xs={22} md={20} className='registration'>
+        <Col xs={22} md={18} className='solutionBody'>
+          <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
+          <p className='headerParagraph'>
+            What is Nutrimap?
+          </p>
+          <p>Nutrimap is a nutritional analysis system designed for the consumer and healthcare sectors. </p>
+          <motion.button className='button' whileHover={{backgroundColor:'white'}} transition={{duration:.1}}>
+            Services Division
+          </motion.button>
+          <motion.div></motion.div>
+        </Col>
+        </Row>
+        <Col xs={22} md={20} className='solutionBody'>
           <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
           <p className='headerParagraph'>
             What is Nutrimap?
