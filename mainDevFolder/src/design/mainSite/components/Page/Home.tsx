@@ -39,7 +39,8 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { Image } from 'antd'
-import { ModuleGraphConnection } from 'webpack'
+import { ModuleGraphConnection } from 'webpack';
+import nutrimapImage from '../../../../../../AdobeStock_257371575.jpeg';
 
 let history = createBrowserHistory()
 
@@ -133,12 +134,14 @@ const Home: React.FC = () => {
     <React.Fragment>
       <Row justify='space-around' className='rowHero' gutter={[0, 16]}>
         <Col xs={22} md={20} className='registration'>
-          <h1>Solutions designed to benefit the general public and institutions.</h1>
+          <h1>Business services that improve consumer wellbeing and
+            stakeholder value. </h1>
           <p className='headerParagraph'>
             <span className='atHeader'>At</span>
             <span className='spanHeader'> KCM INC </span>
-            we design enterprise level solutions that help optimize stakeholder
-            value throughout various global market sectors.
+            we design enterprise level solutions that help organizations
+            operating within multiple market sectors optimize by focusing 
+            on what matters most: people.
           </p>
           <motion.button className='button' whileHover={{backgroundColor:'white'}} transition={{duration:.1}}>
             Services Division
@@ -149,126 +152,55 @@ const Home: React.FC = () => {
       </Row>
 
       <Row justify='space-around' className='rowHero' gutter={[0, 16]} >
-        <Col xs={22} md={19} className='paragraphSectionIntro'>
+        <Col xs={22} md={18} className='paragraphSectionIntro'>
           <h1>
             <span className='sectionStartLetter'>S</span>olutions
           </h1>
           <p className='solutionsParagraph'>
             We offer a suite of high impact solutions that help
-             organizations scale and innovate more impactfully.
-          </p><motion.span>.</motion.span>
+             organizations scale,innovate and optimize more impactfully
+          </p><motion.span className='periodSolution'>.</motion.span>
         </Col>
-       
-        {/* <Col xs={20} md={8} className='nutrimap'>
-          <motion.div className='solutionsDiv'>
-            <Collapse defaultActiveKey={['1']}
-              expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
-              onChange={callback} ghost>
-              <Collapse.Panel
 
-                header="NutriMap" key="1">
-                <motion.div className='solutionsDiv'>
-                  <motion.div className='solutionHeader'>
-                    <h2>Nutrimap</h2>
-                  </motion.div>
-
-                  <p className='pNutrimap'>
-                    Nutrimap at its core is a nutritional analysis system. However, unlike most nutritional analysis solutions - which only give the nutritional
-                    value of an item - Nutrimap provides a deep full-cycle analysis.
-                  </p>
-
-
-                  <motion.table>
-                    <motion.thead>
-                      <motion.tr>
-                        <motion.th>
-                          <h4>How it works</h4>
-                        </motion.th>
-
-                      </motion.tr>
-
-                    </motion.thead>
-                    <motion.tbody>
-                      <motion.tr>
-                        <motion.td>
-                          <p>dello</p>
-                        </motion.td>
-
-                      </motion.tr>
-                      <motion.tr>
-                        <motion.td>
-                          <p>dello</p>
-                        </motion.td>
-
-                      </motion.tr>
-                    </motion.tbody>
-                  </motion.table>
-                  <div>
-                    <Statistic
-                      title='Number of elements and vitamins'
-                      value={'20+'}
-                    />
-                    <Statistic
-                      title='Number of macronutrients including water observed'
-                      value={'7'}
-                    />
-                    <Statistic
-                      title='Number of life-stage groups observed'
-                      value={'6'}
-                    />
-                  </div>
-                </motion.div>
-              </Collapse.Panel>
-              <Collapse.Panel header="IntraVest" key="2">
-                <p>IntraVest</p>
-              </Collapse.Panel>
-              <Collapse.Panel header="LoFarm" key="3">
-                <p>LoFarm</p>
-              </Collapse.Panel>
-              <Collapse.Panel header="AgLo" key="4">
-                <p>AgLo</p>
-              </Collapse.Panel>
-            </Collapse>
-
-          </motion.div>
-
-        </Col> */}
-      <Row justify='space-around' gutter = {[0,50]} >
-        <Col xs={22} md={18} className='solutionBody'>
+      <Row justify='center' gutter = {[0,5]} >
+        <Col xs={22} md={5}><Image className='image' src={nutrimapImage} preview={false}></Image></Col>
+        <Col xs={22} md={13} className='solutionBody'>
           <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
           <p className='headerParagraph'>
-            What is Nutrimap?
+            Nutrimap is a nutritional analysis system engineered to 
+            improve product sourcing, food design and consumer health
+            for organizations operating within the consumer goods, hospitality and 
+            healthcare industries.
           </p>
-          <p>Nutrimap is a nutritional analysis system designed for the consumer and healthcare sectors. </p>
-          <motion.button className='button' whileHover={{backgroundColor:'white'}} transition={{duration:.1}}>
-            Services Division
-          </motion.button>
-          <motion.div></motion.div>
-        </Col>
-        <Col xs={22} md={18} className='solutionBody'>
-          <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
-          <p className='headerParagraph'>
-            What is Nutrimap?
-          </p>
-          <p>Nutrimap is a nutritional analysis system designed for the consumer and healthcare sectors. </p>
-          <motion.button className='button' whileHover={{backgroundColor:'white'}} transition={{duration:.1}}>
-            Services Division
-          </motion.button>
-          <motion.div></motion.div>
-        </Col>
-        </Row>
-        <Col xs={22} md={20} className='solutionBody'>
-          <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
-          <p className='headerParagraph'>
-            What is Nutrimap?
-          </p>
-          <p>Nutrimap is a nutritional analysis system designed for the consumer and healthcare sectors. </p>
-          <motion.button className='button' whileHover={{backgroundColor:'white'}} transition={{duration:.1}}>
-            Services Division
-          </motion.button>
-          <motion.div></motion.div>
-        </Col>
-        
+          <Row justify='space-between' >
+          <Col xs={22} md={6} className = 'solutionOverview'>
+            <h2>Product Sourcing</h2>
+            <p className="solutionOffer">We help you locate manufacturers and suppliers of 
+              products with healthier nutrient profiles.</p>
+             
+            </Col>
+            <Col xs={22} md={6} className = 'solutionOverview'>
+            <h2>Product Design</h2>
+            <p className="solutionOffer">We help you locate manufacturers and suppliers of 
+              products with healthier nutrient profiles.</p>
+             
+            </Col>
+            <Col xs={22} md={6} className = 'solutionOverview'>
+            <h2>Product Health</h2>
+            <p className="solutionOffer">We help you locate manufacturers and suppliers of 
+              products with healthier nutrient profiles.</p>
+             
+            </Col>
+          </Row>
+          <Row justify='space-between' >
+          <Col xs={22} md={6} className = 'solutionOverview'>
+           <motion.button className='registrationButton'whileHover={{fontWeight:500}} transition={{duration:.1}} >
+           <CaretRightOutlined />Register for a free consultation.
+           </motion.button>
+            </Col>
+          </Row>
+        </Col>   
+        </Row>  
       </Row>
 
 

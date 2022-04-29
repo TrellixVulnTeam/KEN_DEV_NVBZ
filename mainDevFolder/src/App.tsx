@@ -32,7 +32,8 @@ const App = () => {
           position: 'fixed',
           zIndex: 1,
           width: '100%',
-          background: '#fafafa'
+          background: '#fafafa',
+          
         }}
       >
         <Menu mode='horizontal' className='largeDisplay'>
@@ -57,11 +58,13 @@ const App = () => {
           >
             <a href='#company'>Company</a>
           </Menu.Item>
-          <Menu.Item key='contact'>
-            <motion.button className='button'>Contact Us</motion.button>
-       
+          <Menu.Item
+            key='telephone'
+          >
+            <a href='tel:404-585-0349'>(404)-585-0349 </a>
           </Menu.Item>
         </Menu>
+        
         <Menu mode='horizontal' className='smallDisplay'>
           <Menu.Item key='home' icon={<HomeOutlined />}>
             KCM INC
