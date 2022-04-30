@@ -150,6 +150,7 @@ const Home: React.FC = () => {
 
       <Row justify='space-around' className='rowHero' gutter={[0, 16]} >
         <Col xs={22} md={18} className='paragraphSectionIntro'>
+          
           <h1>
             <span className='sectionStartLetter'>S</span>olutions
           </h1>

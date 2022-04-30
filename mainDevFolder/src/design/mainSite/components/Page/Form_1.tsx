@@ -1,5 +1,5 @@
 import { CheckOutlined } from '@ant-design/icons';
-import { Input, Form, Button, Result } from 'antd';
+import { Input, Form, Button, Result, Col, Row } from 'antd';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import * as React from 'react';
@@ -76,13 +76,18 @@ export const Form_1 = (props) => {
     
     :
     
-    
-    <Form
+    <Row justify='center' className='form'>
+      <Form
       name="nutrimapregistration"
       onFinish={onFinish}
       onFinishFailed={onFinishedFailed}
       scrollToFirstError
-      size='large'
+      size='middle'
+      labelCol={{sm:{span: 10}}}
+      wrapperCol={{
+        sm: { span: 24 }
+      }}
+      
     >
       <Form.Item
         name="first_name"
@@ -144,6 +149,8 @@ export const Form_1 = (props) => {
         <motion.button className='button' whileHover={{backgroundColor:'#b8862369'}} transition={{duration:0}}>Schedule Consultation</motion.button>
       </Form.Item>
     </Form>
+    </Row>
+   
 }
  
 

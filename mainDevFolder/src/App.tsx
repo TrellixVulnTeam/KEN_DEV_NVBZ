@@ -98,7 +98,7 @@ const App = () => {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/nutrimap' component={Nutrimap}></Route>
-            <Route exact path='/nutrimap/:client' component={Form_1}></Route>
+            <Route exact path='/nutrimap/hello' component={Form_1}></Route>
           </Switch>
         </Router>
       </Content>
