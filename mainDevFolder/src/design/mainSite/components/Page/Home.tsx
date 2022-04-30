@@ -143,10 +143,7 @@ const Home: React.FC = () => {
             operating within multiple market sectors optimize by focusing 
             on what matters most: people.
           </p>
-          <motion.button className='button' whileHover={{backgroundColor:'white'}} transition={{duration:.1}}>
-            Services Division
-          </motion.button>
-          <motion.div></motion.div>
+        
         </Col>
        
       </Row>
@@ -167,37 +164,29 @@ const Home: React.FC = () => {
         <Col xs={22} md={13} className='solutionBody'>
           <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
           <p className='headerParagraph'>
-            Nutrimap is a nutritional analysis system engineered to 
-            improve product sourcing, food design and consumer health
-            for organizations operating within the consumer goods, hospitality and 
-            healthcare industries.
+            Nutrimap is a nutritional analysis system developed to 
+            help institutions <span className='tagWords'>source</span> better products, 
+             <span className='tagWords'> design </span> healthier food and  
+             <span className='tagWords'> improve</span> consumer health.
           </p>
-          <Row justify='space-between' >
-          <Col xs={22} md={6} className = 'solutionOverview'>
-            <h2>Product Sourcing</h2>
-            <p className="solutionOffer">We help you locate manufacturers and suppliers of 
-              products with healthier nutrient profiles.</p>
-             
-            </Col>
-            <Col xs={22} md={6} className = 'solutionOverview'>
-            <h2>Product Design</h2>
-            <p className="solutionOffer">We help you locate manufacturers and suppliers of 
-              products with healthier nutrient profiles.</p>
-             
-            </Col>
-            <Col xs={22} md={6} className = 'solutionOverview'>
-            <h2>Product Health</h2>
-            <p className="solutionOffer">We help you locate manufacturers and suppliers of 
-              products with healthier nutrient profiles.</p>
-             
-            </Col>
-          </Row>
-          <Row justify='space-between' >
-          <Col xs={22} md={6} className = 'solutionOverview'>
+          
+         
+          <Row justify='space-between' gutter={[0,16]}>
+          
+          <Col xs={22} md={13} className = 'solutionOverview'>
+           
+          <motion.button className='registrationButton' whileHover={{fontWeight:500}} transition={{duration:.1}} onClick={()=>{
+            console.log('hello')
+          }}>
+           <CaretRightOutlined />Client registration portal.
+           </motion.button>
+           <motion.button className='registrationButton'whileHover={{fontWeight:500}} transition={{duration:.1}} >
+           <CaretRightOutlined />Partnership registration portal .
+           </motion.button>
            <motion.button className='registrationButton'whileHover={{fontWeight:500}} transition={{duration:.1}} >
            <CaretRightOutlined />Register for a free consultation.
            </motion.button>
-            </Col>
+           </Col>
           </Row>
         </Col>   
         </Row>  
