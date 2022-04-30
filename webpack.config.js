@@ -22,7 +22,7 @@ const configClient = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        liveReload: false,
+        liveReload: true,
         compress: true,
         open: true,
         hot: true,

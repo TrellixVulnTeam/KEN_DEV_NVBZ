@@ -40,7 +40,7 @@ import { Link } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { Image } from 'antd'
 import { ModuleGraphConnection } from 'webpack';
-import nutrimapImage from '../../../../../../AdobeStock_257371575.jpeg';
+// import nutrimapImage from '../../../../../../AdobeStock_257371575.jpeg';
 
 let history = createBrowserHistory()
 
@@ -138,7 +138,7 @@ const Home: React.FC = () => {
             stakeholder value. </h1>
           <p className='headerParagraph'>
             <span className='atHeader'>At</span>
-            <span className='spanHeader'> KCM INC </span>
+            KCM INC 
             we design enterprise level solutions that help organizations
             operating within multiple market sectors optimize by focusing 
             on what matters most: people.
@@ -148,7 +148,7 @@ const Home: React.FC = () => {
        
       </Row>
 
-      <Row justify='space-around' className='rowHero' gutter={[0, 16]} >
+      <Row justify='space-around' className='rowHero' gutter={[0, 100]} >
         <Col xs={22} md={18} className='paragraphSectionIntro'>
           
           <h1>
@@ -156,12 +156,14 @@ const Home: React.FC = () => {
           </h1>
           <p className='solutionsParagraph'>
             We offer a suite of high impact solutions that help
-             organizations scale,innovate and optimize more impactfully
-          </p><motion.span className='periodSolution'>.</motion.span>
+             organizations scale, innovate and optimize more impactfully.
+             </p>
         </Col>
 
       <Row justify='center' gutter = {[0,5]} >
-        <Col xs={22} md={5}><Image className='image' src={nutrimapImage} preview={false}></Image></Col>
+        <Col xs={22} md={5}>
+          {/* <Image className='image' src={nutrimapImage} preview={false}></Image> */}
+          </Col>
         <Col xs={22} md={13} className='solutionBody'>
           <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
           <p className='headerParagraph'>
@@ -176,18 +178,11 @@ const Home: React.FC = () => {
           
           <Col xs={22} md={13} className = 'solutionOverview'>
            
-          <motion.button className='registrationButton' whileHover={{fontWeight:500}} transition={{duration:.1}} onClick={()=>{
-            console.log('hello')
-          }}>
-           <CaretRightOutlined />Client registration portal.
-           </motion.button>
-           <motion.button className='registrationButton'whileHover={{fontWeight:500}} transition={{duration:.1}} >
-           <CaretRightOutlined />Partnership registration portal .
-           </motion.button>
-           <motion.button className='registrationButton'whileHover={{fontWeight:500}} transition={{duration:.1}} >
-           <CaretRightOutlined />Register for a free consultation.
-           </motion.button>
+         <Link to='/nutrimap'>
+         <CaretRightOutlined />Learn more.
+         </Link>
            </Col>
+
           </Row>
         </Col>   
         </Row>  

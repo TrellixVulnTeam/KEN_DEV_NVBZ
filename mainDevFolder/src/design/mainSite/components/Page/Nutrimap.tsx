@@ -44,6 +44,8 @@ const Nutrimap = () => {
   const [nutriInfo, setNutriInfo] = React.useState([])
   const [nutrientTrigger, setTrigger] = React.useState(false)
   const [reply, setReply] = React.useState(undefined)
+  const [compare, setCompare] = React.useState(undefined)
+
 
   // const onInput = (values: any) => {
   //   console.log(values)
@@ -70,7 +72,6 @@ const Nutrimap = () => {
 
   React.useEffect(() => {
     const dataReply = nutriInfo.map((number, i) => {
-      console.log()
 
       const { value } = number
 
@@ -113,39 +114,90 @@ const Nutrimap = () => {
           break
       }
 
+      
+setCompare(number)
+
       return (
-        <motion.div key={number.nutrientName}>
-          <p style={{ width: 96 }}>{String(number.nutrientName)}</p>
-          <div>
-            <p>{`${number.value}${number.unitName.toLocaleLowerCase()}`}</p>
-          </div>
-          <p>{number.analysis}</p>
-        </motion.div>
+         
+          <Statistic title={number.nutrientName} value={number.value} suffix={number.unitName.toLocaleLowerCase()} />
+
       )
     })
     setReply(dataReply)
   }, [nutriInfo])
 
+  React.useEffect(() => {
+    const dataReply1 = nutriInfo.map((number, i) => {
+
+      const { value } = number
+
+      switch (number.nutrientName) {
+        case 'Protein':
+          number.analysis = `${((value / 56) * 100).toPrecision(2)}`
+          break
+
+        case 'Fiber, total dietary':
+          number.analysis = `${((value / 38) * 100).toPrecision(2)}`
+          number.nutrientName = 'Fiber'
+          break
+
+        case 'Carbohydrate, by difference':
+          number.analysis = `${((value / 130) * 100).toPrecision(2)}`
+          number.nutrientName = 'Carbohydrate'
+          break
+
+        case 'Magnesium, Mg':
+          number.analysis = `${((value / 420) * 100).toPrecision(2)}`
+          number.nutrientName = 'Magnesium'
+          break
+
+        case 'Calcium, Ca':
+          number.analysis = `${((value / 1000) * 100).toPrecision(2)}`
+          number.nutrientName = 'Calcium'
+          break
+
+        case 'Vitamin C, total ascorbic acid':
+          number.analysis = `${((value / 90) * 100).toPrecision(2)}`
+          number.nutrientName = 'Vitamin C'
+          break
+
+        case 'Vitamin E (alpha-tocopherol)':
+          number.analysis = `${((value / 15) * 100).toPrecision(2)}`
+          number.nutrientName = 'Vitamin E'
+          break
+        
+          case 'Sodium, Na':
+            number.analysis = `${((value / 1500) * 100).toPrecision(2)}`
+            number.nutrientName = 'Sodium'
+            break
+
+        default:
+          break
+      }
+
+      
+setCompare(number)
+
+      return (
+         
+          <Statistic title={`RIL ${number.nutrientName} `} value={number.analysis} suffix={'%'} />
+
+      )
+    })
+    setCompare(dataReply1)
+  }, [nutriInfo])
+
+
+
+
+  console.log(compare)
   return (
     <Layout>
-      {/* <Sider>
-           <Row gutter={[0,16]} justify='center'>
-               <Col>
-               <Button className='registrationButton' icon={<UserAddOutlined />}>Representative hjkkjh</Button>
-               </Col>
-               <Col>
-               <Button className='registrationButton' icon={<ClusterOutlined />}>Institution</Button>
-               </Col>
-               <Col>
-               <Button className='registrationButton' icon={<ToolOutlined />}>Service</Button>
-               </Col>
-           </Row>
-       
-       </Sider> */}
+     
       <Layout>
         <Content>
-          <Row justify='space-around' className='rowHero' gutter={[0, 16]}>
-            <Col xs={22} className='registration'>
+          <Row justify='center' className='rowHero' gutter={[0, 16]}>
+            <Col xs={22} md={12} className='registration'>
               <h1>NutriMap Overview</h1>
 
               <motion.p>
@@ -154,121 +206,67 @@ const Nutrimap = () => {
                 institutions create better nutritional plans.
               </motion.p>
             </Col>
+
+            </Row>
+            <Row justify='center' className='rowHero' gutter={[0, 8]}>
             <Col
               xs={22}
-              md={10}
+              md={12}
               className='registration'
-              // style={{
-              //   flexFlow: 'wrap',
-              //   justifyContent: 'space-evenly',
-              //   alignItems: 'end',
-              //   height:'315.94px'
-              // }}
             >
-              <h3>Service Features:</h3>
-
-              <motion.p whileHover={{ fontWeight: '500', cursor: 'pointer' }}>
-                Nutritive Value Report{' '}
-                <Popover
-                  content={
-                    <p className='popover'>
-                      Understand the micro and macro nutrient content of the
-                      products you design.
-                    </p>
-                  }
-                  title='Nutritive Value Report'
-                  trigger='click'
-                >
-                  <InfoCircleOutlined />
-                </Popover>{' '}
+              <h3>Analyze nutritional data</h3>
+              <motion.p>
+                Analyzes the micro and macro nutrient 
+                content of individual food items.
               </motion.p>
-              <motion.p whileHover={{ fontWeight: '500', cursor: 'pointer' }}>
-                Nutrient Sourcing Mapping{' '}
-                <Popover
-                  content={
-                    <p className='popover'>
-                      Locate the source of a nutrient value and decompose it
-                      data ecosystem.
-                    </p>
-                  }
-                  title='Nutrient Sourcing Mapping'
-                  trigger='click'
-                >
-                  <InfoCircleOutlined />
-                </Popover>{' '}
-              </motion.p>
-              <motion.p whileHover={{ fontWeight: '500', cursor: 'pointer' }}>
-                Life-Phase Impact Report{' '}
-                <Popover
-                  content={
-                    <p className='popover'>
-                      Understand how the nutrient levels in your product affect
-                      individuals of various age groups and life phases.{' '}
-                    </p>
-                  }
-                  title='Life-Phase Impact Report'
-                  trigger='click'
-                >
-                  <InfoCircleOutlined />
-                </Popover>{' '}
-              </motion.p>
-
-              {/* <Form_0  /> */}
-            </Col>
-
-            <Col xs={22} md={10} className='registration'>
-              {/* <Form_0/> */}
-              <motion.div>
-                <h2>Nutrimap Label</h2>
-                <Select
+              <Select
                   style={{ width: 'fit-content' }}
                   onChange={handleNutrientTable}
-                  defaultValue='Select food item'
+                  defaultValue='Select one food item'
+                  size='middle'
                 >
-                  <Select.Option value='whole milk'>Whole milk</Select.Option>
-                  <Select.Option value='bread'>Bread</Select.Option>
+                  <Select.Option value='whole milk'>Milk</Select.Option>
                   <Select.Option value='sweet potatoes'>
-                    Sweet potatoes
+                    Eggs
                   </Select.Option>
                 </Select>
-              </motion.div>
-              <motion.div>
-                <p>Serving(g)</p>
-                <p></p>
-                <InputNumber min={0} max={100} step={5} defaultValue={100} size="small"/>
-               
-              </motion.div>
-              <motion.div>
-                <p>Element</p>
-                <p></p>
-                <p>Amount</p>
-
-                {/* <p>{nutriData.foods[0].fdcId}</p> */}
-              </motion.div>
-              {nutrientTrigger == false ? <p>true</p> : reply}
-
-              {/* <Timeline >
-    <Timeline.Item>Client on boarding</Timeline.Item>
-    <Timeline.Item color="green">Product recording</Timeline.Item>
-    <Timeline.Item dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>
-      Supplier research
-    </Timeline.Item>
-    <Timeline.Item color="red">Research Summary</Timeline.Item>
-    <Timeline.Item> Recipe design </Timeline.Item>
-    <Timeline.Item dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>
-      Nutrient investigation
-    </Timeline.Item>
-    <Timeline.Item dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>
-      Nutrient source mapping
-    </Timeline.Item>
-    <Timeline.Item dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>
-      Life Stage mapping
-    </Timeline.Item>
-  </Timeline> */}
-            </Col>
+                {nutrientTrigger == false ? null : <div>{reply}</div>}
+            </Col>   
           </Row>
 
-          <Row className='rowHero'></Row>
+          <Row justify='center' className='rowHero' gutter={[0, 8]}>
+            <Col
+              xs={22}
+              md={12}
+              className='registration'
+            >
+              <h3>Understand how your products affect consumers.</h3>
+              <motion.p>
+                We compare a product's nutrient values to 
+                recommended intake levels prescribed by the world's leading 
+                health research institutions.
+              </motion.p>
+              {nutrientTrigger == false ? null : <div>{compare}</div>}
+            </Col>   
+          </Row>
+
+          <Row justify='center' className='rowHero' gutter={[0, 8]}>
+            <Col
+              xs={22}
+              md={12}
+              className='registration'
+            >
+              <h3>Understand how your products affect consumers.</h3>
+              <motion.p>
+                We compare a product's nutrient values to 
+                recommended intake levels prescribed by the world's leading 
+                health research institutions.
+              </motion.p>
+              {nutrientTrigger == false ? null : <div>{compare}</div>}
+            </Col>   
+          </Row>
+
+          
         </Content>
       </Layout>
     </Layout>

@@ -62,14 +62,8 @@ app.post('/nutritionalData', async (req, res, error) => {
   const nutrientProfile: [] = arraySort.map((data: any, index: number) => {
     if (
       data.nutrientId == 1003 ||
-      data.nutrientId == 1005 ||
-      data.nutrientId == 1079 ||
-      data.nutrientId == 1109 ||
-      data.nutrientId == 1114 ||
-      data.nutrientId == 1162 ||
-      data.nutrientId == 1090 ||
       data.nutrientId == 1087 ||
-      data.nutrientId == 100
+      data.nutrientId == 1093
 
     ) {
       return data
