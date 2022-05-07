@@ -78,17 +78,9 @@ app.post('/nutritionalData', async (req, res, error) => {
 })
 
 
-app.get('/test', async (req, res) => {
-  
-  
-  // const data = await fetch(
-  //   `https://api.nal.usda.gov/fdc/v1/foods/search?query=${`Hood`}&dataType=Branded&api_key=${process.env.API_KEY}`
-  // )
-  // const foodsQuery = await data.json()
+app.post('/test', async (req, res) => {
+  console.log(req.body)
 
-  // const foodsArray = await foodsQuery.foods.map((i: any) => {
-  //   return i
-  // })
   
 
   res.sendStatus(200)

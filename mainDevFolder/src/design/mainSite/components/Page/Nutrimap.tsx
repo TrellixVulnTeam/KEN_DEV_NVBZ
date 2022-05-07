@@ -14,6 +14,7 @@ import {
   Checkbox,
   Col,
   DatePicker,
+  Form,
   Input,
   InputNumber,
   Layout,
@@ -39,21 +40,27 @@ import { Link } from 'react-router-dom'
 import { Form_0 } from './Form'
 
 const Nutrimap = () => {
-  const [registration, setRegistration] = React.useState(false)
+  const [registration, setRegistration] = React.useState(undefined)
   const [nutriData, setNutriData] = React.useState([])
   const [nutriInfo, setNutriInfo] = React.useState([])
   const [nutrientTrigger, setTrigger] = React.useState(false)
   const [reply, setReply] = React.useState(undefined)
   const [compare, setCompare] = React.useState(undefined)
+  const [data, setData] = React.useState(undefined);
+
+  
 
 
-  // const onInput = (values: any) => {
-  //   console.log(values)
-  // }
 
-  // const handleChange = value => {
-  //   console.log(value)
-  // }
+
+const handleRegistrationPartner =()=>{
+  setRegistration(1)
+}
+
+const handleRegistrationClient =()=>{
+  setRegistration(0)
+}
+
   const handleNutrientTable = async value => {
     const fdcData = await fetch('http://localhost:8080/nutritionalData', {
       method: 'POST',
@@ -72,7 +79,6 @@ const Nutrimap = () => {
 
   React.useEffect(() => {
     const dataReply = nutriInfo.map((number, i) => {
-
       const { value } = number
 
       switch (number.nutrientName) {
@@ -114,21 +120,22 @@ const Nutrimap = () => {
           break
       }
 
-      
-setCompare(number)
+      setCompare(number)
 
       return (
-         
-          <Statistic title={number.nutrientName} value={number.value} suffix={number.unitName.toLocaleLowerCase()} />
-
+        <Statistic
+          title={number.nutrientName}
+          value={number.value}
+          suffix={number.unitName.toLocaleLowerCase()}
+        />
       )
     })
+
     setReply(dataReply)
   }, [nutriInfo])
 
   React.useEffect(() => {
     const dataReply1 = nutriInfo.map((number, i) => {
-
       const { value } = number
 
       switch (number.nutrientName) {
@@ -165,108 +172,394 @@ setCompare(number)
           number.analysis = `${((value / 15) * 100).toPrecision(2)}`
           number.nutrientName = 'Vitamin E'
           break
-        
-          case 'Sodium, Na':
-            number.analysis = `${((value / 1500) * 100).toPrecision(2)}`
-            number.nutrientName = 'Sodium'
-            break
+
+        case 'Sodium, Na':
+          number.analysis = `${((value / 1500) * 100).toPrecision(2)}`
+          number.nutrientName = 'Sodium'
+          break
 
         default:
           break
       }
 
-      
-setCompare(number)
+      setCompare(number)
 
       return (
-         
-          <Statistic title={`RIL ${number.nutrientName} `} value={number.analysis} suffix={'%'} />
-
+        <Statistic
+          title={`RIL ${number.nutrientName} `}
+          value={number.analysis}
+          suffix={'%'}
+        />
       )
     })
+
     setCompare(dataReply1)
   }, [nutriInfo])
 
+  const onFinish = async (values: any) => {
+    const fdcData = await fetch('http://localhost:8080/test', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        foodSelection: values
+      })
+    })
+  }
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo)
+  }
+  const Clients = ( <Form
+    name='basic'
+    labelCol={{ span: 8 }}
+    wrapperCol={{ span: 11 }}
+    initialValues={{ remember: true }}
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
+    autoComplete='off'
+  >
+    <h3>Client Registration</h3>
+    <Form.Item
+      label='Business Type'
+      name='businessType'
+      rules={[
+        { required: true, message: 'Please input your firstname!' }
+      ]}
+    >
+      <Select
+        style={{ width: 'fit-content' }}
+        defaultValue='Select one food item.'
+        size='middle'
+      >
+        <Select.Option value='Casino'>Casino</Select.Option>
+        <Select.Option value='Cruise Line'>Cruise Line</Select.Option>
+        <Select.Option value='Hotel'>Hotel</Select.Option>
+        <Select.Option value='Leisure Facility'>Leisure Facility</Select.Option>
+        <Select.Option value='Resort'>Resort</Select.Option>
+        <Select.Option value='Restaurant'>Restaurant</Select.Option>
+        <Select.Option value='Grocery Market'>Grocery Market</Select.Option>
+      </Select>
+    </Form.Item>
+
+    <Form.Item
+      label='Business Name'
+      name='businessName'
+      rules={[
+        { required: true, message: 'Please input your firstname!' }
+      ]}
+    >
+      <Input />
+    </Form.Item>
+    <Form.Item
+      label='Firstname'
+      name='RepresentativeFirstName'
+      rules={[
+        { required: true, message: 'Please input your firstname!' }
+      ]}
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item
+      label='Lastname'
+      name='representativeLastName'
+      rules={[
+        { required: true, message: 'Please input your lastname!' }
+      ]}
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item
+      name='phone'
+      label='Phone Number'
+      rules={[
+        {
+          required: true,
+          message: 'Please enter your phone number!'
+        }
+      ]}
+    >
+      <Input style={{ width: '100%' }} />
+    </Form.Item>
+
+    <Form.Item
+      name='email'
+      label='Email'
+      tooltip='Enter a good contact email.'
+      rules={[
+        {
+          type: 'email',
+          message: 'The input is not valid E-mail!'
+        },
+        {
+          required: true,
+          message: 'Enter a valid email address this email!'
+        }
+      ]}
+      hasFeedback
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item wrapperCol={{ offset: 6, span: 12 }}>
+      <motion.button
+        type='submit'
+        whileHover={{
+          color: 'black',
+          fontWeight: 300,
+          border: '1px solid black'
+        }}
+        transition={{ duration: 0.1 }}
+        className='clientNutrimap'
+      >
+        Submit
+      </motion.button>
+    </Form.Item>
+  </Form>)
 
 
 
-  console.log(compare)
+const Partners =  <Form
+  name='basic'
+  labelCol={{ span: 8 }}
+  wrapperCol={{ span: 11 }}
+  initialValues={{ remember: true }}
+  onFinish={onFinish}
+  onFinishFailed={onFinishFailed}
+  autoComplete='on'
+>
+  <h3>Partner Registration</h3>
+  <Form.Item
+    label='Industry'
+    name='industryType'
+    rules={[
+      { required: true, message: 'Please input your firstname!' }
+    ]}
+  >
+    <Select
+      // style={{ width: 'fit-content' }}
+      defaultValue='Select one food item.'
+      size='middle'
+    >
+      <Select.Option value='Oilseed and Grain Farming'>Oilseed and Grain Farming</Select.Option>
+      <Select.Option value='Vegetable and Melon Farming'>Vegetable and Melon Farming</Select.Option>
+      <Select.Option value='Fruit and Tree Nut Farming'>Fruit and Tree Nut Farming</Select.Option>
+      <Select.Option value='Greenhouse, Nursery, and Floriculture Production'>Greenhouse, Nursery, and Floriculture Production</Select.Option>
+      <Select.Option value='Cattle Ranching and Farming'>Cattle Ranching and Farming</Select.Option>
+      <Select.Option value='Hog and Pig Farming'>Hog and Pig Farming</Select.Option>
+      <Select.Option value='Sheep and Goat Farming'>Sheep and Goat Farming</Select.Option>
+      <Select.Option value=' Fishing'> Fishing</Select.Option>
+      <Select.Option value='Hunting and Trapping'>Hunting and Trapping</Select.Option>
+      <Select.Option value='Food Manufacturing'>Food Manufacturing</Select.Option>
+      <Select.Option value='Beverage Manufacturing'>Beverage Manufacturing</Select.Option>
+      <Select.Option value='Farm Product Merchant Wholesalers'>Farm Product Merchant Wholesalers</Select.Option>
+      <Select.Option value='Grocery Merchant Wholesalers'>Grocery Merchant Wholesalers</Select.Option>
+      <Select.Option value='Grocery Merchant Wholesalers'>Grocery Merchant Wholesalers</Select.Option>
+
+     
+
+
+
+    </Select>
+  </Form.Item>
+
+  <Form.Item
+    label='Business Name'
+    name='businessName'
+    rules={[
+      { required: true, message: 'Please input your firstname!' }
+    ]}
+  >
+    <Input />
+  </Form.Item>
+  <Form.Item
+    label='Zipcode'
+    name='zipcode'
+    rules={[
+      { required: true, message: 'Please input your firstname!' }
+    ]}
+  >
+    <Input />
+  </Form.Item>
+
+  <Form.Item
+    name='phone'
+    label='Phone Number'
+    rules={[
+      {
+        required: true,
+        message: 'Please enter your phone number!'
+      }
+    ]}
+  >
+    <Input style={{ width: '100%' }} />
+  </Form.Item>
+
+  <Form.Item
+    name='email'
+    label='Email'
+    tooltip='Enter a good contact email.'
+    rules={[
+      {
+        type: 'email',
+        message: 'The input is not valid E-mail!'
+      },
+      {
+        required: true,
+        message: 'Enter a valid email address this email!'
+      }
+    ]}
+    hasFeedback
+  >
+    <Input />
+  </Form.Item>
+
+  <Form.Item wrapperCol={{ offset: 6, span: 12 }}>
+    <motion.button
+      type='submit'
+      whileHover={{
+        color: 'black',
+        fontWeight: 300,
+        border: '1px solid black'
+      }}
+      transition={{ duration: 0.1 }}
+      className='clientNutrimap'
+    >
+      Submit
+    </motion.button>
+  </Form.Item>
+</Form>;
+  
+
+  
+      
+    
+  
+   
+    
+
+  
+
+  
   return (
     <Layout>
-     
       <Layout>
         <Content>
           <Row justify='center' className='rowHero' gutter={[0, 16]}>
             <Col xs={22} md={12} className='registration'>
               <h1>NutriMap Overview</h1>
 
-              <motion.p>
-                NutriMap is a nutritional analysis service developed to help
-                food manufacturers design healthier products and healthcare
-                institutions create better nutritional plans.
+              <motion.p className='solutionsPageParagraph'>
+                NutriMap is a data driven nutritional analysis solution
+                developed to improve consumer and community wellbeing by
+                analyzing final food products, locating manufacturers of
+                healthier products , and connecting food designers with
+                manufacturers.
               </motion.p>
-            </Col>
-
-            </Row>
-            <Row justify='center' className='rowHero' gutter={[0, 8]}>
-            <Col
-              xs={22}
-              md={12}
-              className='registration'
-            >
-              <h3>Analyze nutritional data</h3>
-              <motion.p>
-                Analyzes the micro and macro nutrient 
-                content of individual food items.
+              <motion.p className='solutionsValueParagraph'>
+                The following examples are based on a serving size of 3.6oz.
               </motion.p>
               <Select
-                  style={{ width: 'fit-content' }}
-                  onChange={handleNutrientTable}
-                  defaultValue='Select one food item'
-                  size='middle'
-                >
-                  <Select.Option value='whole milk'>Milk</Select.Option>
-                  <Select.Option value='sweet potatoes'>
-                    Eggs
-                  </Select.Option>
-                </Select>
-                {nutrientTrigger == false ? null : <div>{reply}</div>}
-            </Col>   
+                style={{ width: 'fit-content' }}
+                onChange={handleNutrientTable}
+                defaultValue='Select one food item to view an example of Nutrimaps analysis'
+                size='middle'
+              >
+                <Select.Option value='bread'>Bread</Select.Option>
+                <Select.Option value='butter'>Butter</Select.Option>
+                <Select.Option value='whole milk'>Milk</Select.Option>
+                <Select.Option value='sweet potatoes'>
+                  Sweet Potatoes
+                </Select.Option>
+              </Select>
+            </Col>
+          </Row>
+          <Row justify='center' className='rowHero' gutter={[0, 8]}>
+            <Col xs={22} md={12} className='registration'>
+              <h3>Analyze nutritional data</h3>
+              <motion.p className='solutionsPageParagraph'>
+                Analyzes the micro and macro nutrient content of individual food
+                items and their various components. 
+              </motion.p>
+
+              {nutrientTrigger == false ? null : <div>{reply}</div>}
+            </Col>
           </Row>
 
           <Row justify='center' className='rowHero' gutter={[0, 8]}>
-            <Col
-              xs={22}
-              md={12}
-              className='registration'
-            >
+            <Col xs={22} md={12} className='registration'>
               <h3>Understand how your products affect consumers.</h3>
-              <motion.p>
-                We compare a product's nutrient values to 
-                recommended intake levels prescribed by the world's leading 
-                health research institutions.
+              <motion.p className='solutionsPageParagraph'>
+                Compare the nutrient value of your finished product to
+                recommended daily nutrient intake levels.
               </motion.p>
               {nutrientTrigger == false ? null : <div>{compare}</div>}
-            </Col>   
+            </Col>
           </Row>
 
           <Row justify='center' className='rowHero' gutter={[0, 8]}>
-            <Col
-              xs={22}
-              md={12}
-              className='registration'
-            >
-              <h3>Understand how your products affect consumers.</h3>
-              <motion.p>
-                We compare a product's nutrient values to 
-                recommended intake levels prescribed by the world's leading 
-                health research institutions.
+            <Col xs={22} md={12} className='registration'>
+              <h3>Source and procure better products.</h3>
+              <motion.p className='solutionsPageParagraph'>
+                Locate maufacturers and producers of products
+                that help you create better food products .
               </motion.p>
-              {nutrientTrigger == false ? null : <div>{compare}</div>}
-            </Col>   
+            </Col>
           </Row>
 
-          
+          <Row justify='center' className='rowHero' gutter={[0, 8]}>
+            <Col xs={22} md={12} className='registration'>
+              <h3>Register below</h3>
+              <motion.p className='solutionsPageParagraph'>
+                Register as a supply partner or client by selecting the option
+                below that best suits your institution's needs.
+              </motion.p>
+              <motion.button
+                whileHover={{
+                  color: 'black',
+                  fontWeight: 300,
+                  border: '1px solid #b88623'
+                }}
+                whileTap={{
+                  color: 'black',
+                  fontWeight: 200,
+                  border: '1px solid #b88623'
+                }}
+                onClick={handleRegistrationPartner}
+                transition={{ duration: 0.1 }}
+                className='buttonRegistration_Client'
+              >
+                <span className='spanReg'>Click here </span> to register as a distribution partner.
+              </motion.button>
+              <motion.button
+                whileHover={{
+                  color: 'black',
+                  fontWeight: 300,
+                  border: '1px solid #b88623'
+                }}
+
+                whileTap={{
+                  color: 'black',
+                  fontWeight: 200,
+                  border: '1px solid #b88623'
+                }}
+                onClick={handleRegistrationClient}
+                transition={{ duration: 0.1 }}
+                className='buttonRegistration_Client'
+              >
+                <span className='spanReg'>Client here </span> to register as a client.
+              </motion.button>
+            </Col>
+          </Row>
+
+          <Row justify='center' className='rowHero' gutter={[0, 8]}>
+            <Col xs={22} md={12} className='registration'>
+            {registration?Partners:Clients}
+            </Col>
+          </Row>
         </Content>
       </Layout>
     </Layout>

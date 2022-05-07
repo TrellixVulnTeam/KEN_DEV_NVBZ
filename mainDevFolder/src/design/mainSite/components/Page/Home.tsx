@@ -21,6 +21,7 @@ import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
   AudioOutlined,
+  BorderOutlined,
   CaretRightOutlined,
   CheckCircleFilled,
   DownloadOutlined,
@@ -40,14 +41,21 @@ import { Link } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { Image } from 'antd'
 import { ModuleGraphConnection } from 'webpack';
-// import nutrimapImage from '../../../../../../AdobeStock_257371575.jpeg';
+// import nutrimapImage from '../../../../../../markus-winkler-HeqXGxnsnX4-unsplash.jpg';
+import { WordCloud } from '@ant-design/plots';
+
 
 let history = createBrowserHistory()
 
 const Home: React.FC = () => {
+
   const [isModalVisible, setIsModalVisible] = React.useState(false)
   const [contact, setContact] = React.useState(false)
   const [text, setText] = React.useState('')
+
+  
+
+ 
 
   const contactUs = () => {
     setContact(!contact)
@@ -133,15 +141,12 @@ const Home: React.FC = () => {
   return (
     <React.Fragment>
       <Row justify='space-around' className='rowHero' gutter={[0, 16]}>
-        <Col xs={22} md={20} className='registration'>
-          <h1>Business services that improve consumer wellbeing and
-            stakeholder value. </h1>
+        <Col xs={22} md={15} className='registration'>
+          <h1>Engineering business solutions that benefit the general public</h1>
           <p className='headerParagraph'>
-            <span className='atHeader'>At</span>
-            KCM INC 
-            we design enterprise level solutions that help organizations
-            operating within multiple market sectors optimize by focusing 
-            on what matters most: people.
+            At KCM INC we focus on developing solutions that improve the 
+            well of our general public, maximize stakeholder value and 
+            help business optimize.
           </p>
         
         </Col>
@@ -149,28 +154,32 @@ const Home: React.FC = () => {
       </Row>
 
       <Row justify='space-around' className='rowHero' gutter={[0, 100]} >
-        <Col xs={22} md={18} className='paragraphSectionIntro'>
+        <Col xs={22} md={15} className='paragraphSectionIntro'>
           
           <h1>
             <span className='sectionStartLetter'>S</span>olutions
           </h1>
-          <p className='solutionsParagraph'>
-            We offer a suite of high impact solutions that help
-             organizations scale, innovate and optimize more impactfully.
-             </p>
+          <motion.p  className='headerParagraph'>
+            Our solutions assist business operating within 
+            a broad range of industries. We design for people first then
+            engineer towards improving the bottom line. 
+             </motion.p>
         </Col>
 
-      <Row justify='center' gutter = {[0,5]} >
-        <Col xs={22} md={5}>
-          {/* <Image className='image' src={nutrimapImage} preview={false}></Image> */}
+      <Row justify='center' gutter = {[0,5]} className='descriptionDiv'>
+        <Col xs={22} md={5} >
+          {/* <Image preview={false} className='image' src={nutrimapImage}></Image> */}
           </Col>
-        <Col xs={22} md={13} className='solutionBody'>
+        <Col xs={22} md={10} className='solutionBody'>
           <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
+          <div>
+            <p>Health,Nutrition</p>
+          </div>
           <p className='headerParagraph'>
-            Nutrimap is a nutritional analysis system developed to 
-            help institutions <span className='tagWords'>source</span> better products, 
-             <span className='tagWords'> design </span> healthier food and  
-             <span className='tagWords'> improve</span> consumer health.
+            Nutrimap or Nutritional Mapping helps fight malnutrition and improve product quality
+            by improving the nutrient content of food products. We help business 
+            find the manufacturers, distributors and products 
+            necessary to create nutrient rich products. 
           </p>
           
          
@@ -178,9 +187,63 @@ const Home: React.FC = () => {
           
           <Col xs={22} md={13} className = 'solutionOverview'>
            
-         <Link to='/nutrimap'>
-         <CaretRightOutlined />Learn more.
-         </Link>
+         {/* <Link to='/nutrimap' className='learnMore'>
+         Learn more.
+     
+         </Link> */}
+        <Link to='/nutrimap'> <motion.button 
+         whileHover={{color:'black',fontWeight:300,border:'1px solid black'}} 
+         transition={{duration:.1}} 
+         className='buttonNutrimap'>Learn More</motion.button></Link>
+           </Col>
+
+          </Row>
+        </Col>   
+        </Row>  
+      </Row>
+
+      <Row justify='space-around' className='rowHero' gutter={[0, 100]} >
+        <Col xs={22} md={15} className='paragraphSectionIntro'>
+          
+          <h1>
+            <span className='sectionStartLetter'>S</span>olutions
+          </h1>
+          <motion.p  className='headerParagraph'>
+            Our solutions assist business operating within 
+            a broad range of industries. We design for people first then
+            engineer towards improving the bottom line. 
+             </motion.p>
+        </Col>
+
+      <Row justify='center' gutter = {[0,5]} className='descriptionDiv'>
+        <Col xs={22} md={5} >
+          {/* <Image preview={false} className='image' src={nutrimapImage}></Image> */}
+          </Col>
+        <Col xs={22} md={10} className='solutionBody'>
+          <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
+          <div>
+            <p>Health,Nutrition</p>
+          </div>
+          <p className='headerParagraph'>
+            Nutrimap or Nutritional Mapping helps fight malnutrition and improve product quality
+            by improving the nutrient content of food products. We help business 
+            find the manufacturers, distributors and products 
+            necessary to create nutrient rich products. 
+          </p>
+          
+         
+          <Row justify='space-between' gutter={[0,16]}>
+          
+          <Col xs={22} md={13} className = 'solutionOverview'>
+           
+         {/* <Link to='/nutrimap' className='learnMore'>
+         Learn more.
+     
+         </Link> */}
+        <Link to='/nutrimap'> <motion.button 
+         whileHover={{color:'black',fontWeight:300,border:'1px solid black'}} 
+         transition={{duration:.1}} 
+         className='buttonNutrimap'>Learn More</motion.button></Link>
            </Col>
 
           </Row>
