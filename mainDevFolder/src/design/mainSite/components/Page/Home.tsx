@@ -14,7 +14,8 @@ import {
   Divider,
   Badge,
   Popover,
-  Modal
+  Modal,
+  Carousel
 } from 'antd'
 import {
   ArrowDownOutlined,
@@ -28,13 +29,15 @@ import {
   ExperimentOutlined,
   GlobalOutlined,
   InfoCircleOutlined,
+  LockOutlined,
   MobileTwoTone,
   PhoneOutlined,
   PieChartFilled,
   RightCircleOutlined,
   SettingOutlined,
   SolutionOutlined,
-  ToolOutlined
+  ToolOutlined,
+  UserOutlined
 } from '@ant-design/icons'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -53,9 +56,9 @@ const Home: React.FC = () => {
   const [contact, setContact] = React.useState(false)
   const [text, setText] = React.useState('')
 
-  
 
- 
+
+  const [form] = Form.useForm();
 
   const contactUs = () => {
     setContact(!contact)
@@ -141,114 +144,176 @@ const Home: React.FC = () => {
   return (
     <React.Fragment>
       <Row justify='space-around' className='rowHero' gutter={[0, 16]}>
-        <Col xs={22} md={15} className='registration'>
+        <Col xs={22} md={7} className='registration'>
           <h1>Engineering business solutions that benefit the general public</h1>
           <p className='headerParagraph'>
-            At KCM INC we focus on developing solutions that improve the 
-            well of our general public, maximize stakeholder value and 
+            At KCM INC we focus on developing solutions that improve the
+            well of our general public, maximize stakeholder value and
             help business optimize.
           </p>
-        
+
         </Col>
-       
+        <Col xs={22} md={8} className='registration'>
+
+          <Form
+            name='basic'
+
+            initialValues={{ remember: true }}
+            // onFinish={onFinish}
+            // onFinishFailed={onFinishFailed}
+            autoComplete='off'
+
+
+          >
+
+            <Form.Item
+              name='phone'
+              label='Phone Number'
+              rules={[
+                {
+                  required: true,
+                  message: 'Please enter your phone number!'
+                }
+              ]}
+            >
+              <Input style={{ width: '100%' }} />
+            </Form.Item>
+
+            <Form.Item
+              name='email'
+              label='Email'
+              tooltip='Enter a good contact email.'
+              rules={[
+                {
+                  type: 'email',
+                  message: 'The input is not valid E-mail!'
+                },
+                {
+                  required: true,
+                  message: 'Enter a valid email address this email!'
+                }
+              ]}
+              hasFeedback
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item wrapperCol={{ offset: 6, span: 12 }}>
+              <motion.button
+                type='submit'
+                whileHover={{
+                  color: 'black',
+                  fontWeight: 300,
+                  border: '1px solid black'
+                }}
+                transition={{ duration: 0.1 }}
+                className='clientNutrimap'
+              >
+                Submit
+              </motion.button>
+            </Form.Item>
+          </Form>
+        </Col>
+
+      </Row>
+
+      <Row justify='space-around' className='rowHero' gutter={[0, 100]} >
+        <Col xs={22} md={7} className='paragraphSectionIntro'>
+
+          <h1>
+            <span className='sectionStartLetter'>S</span>olutions
+          </h1>
+          <motion.p className='headerParagraph'>
+            Our solutions assist business operating within
+            a broad range of industries. We design for people first then
+            engineer towards improving the bottom line.
+          </motion.p>
+        </Col>
+
+
+
+        <Col xs={22} md={8} className='solutionBody'>
+          <Carousel 
+          
+          dotPosition='top'>
+            <div>
+                <h1 className='solutionName'>Nutri<span>-</span>Map</h1>
+                <div>
+                  <p>Health,Nutrition</p>
+                </div>
+                <p className='headerParagraph'>
+                  Nutrimap or Nutritional Mapping helps fight malnutrition and improve product quality
+                  by improving the nutrient content of food products. We help business
+                  find the manufacturers, distributors and products
+                  necessary to create nutrient rich products.
+                </p>
+                <Link to='/nutrimap'> <motion.button
+                  whileHover={{ color: 'black', fontWeight: 300, border: '1px solid black' }}
+                  transition={{ duration: .1 }}
+                  className='buttonNutrimap'>Learn More</motion.button></Link>
+            </div>
+            <div>
+              <h3 >2</h3>
+            </div>
+            <div>
+              <h3 >3</h3>
+            </div>
+            <div>
+              <h3 >4</h3>
+            </div>
+          </Carousel>
+
+        </Col>
+
       </Row>
 
       <Row justify='space-around' className='rowHero' gutter={[0, 100]} >
         <Col xs={22} md={15} className='paragraphSectionIntro'>
-          
+
           <h1>
             <span className='sectionStartLetter'>S</span>olutions
           </h1>
-          <motion.p  className='headerParagraph'>
-            Our solutions assist business operating within 
+          <motion.p className='headerParagraph'>
+            Our solutions assist business operating within
             a broad range of industries. We design for people first then
-            engineer towards improving the bottom line. 
-             </motion.p>
+            engineer towards improving the bottom line.
+          </motion.p>
         </Col>
 
-      <Row justify='center' gutter = {[0,5]} className='descriptionDiv'>
-        <Col xs={22} md={5} >
-          {/* <Image preview={false} className='image' src={nutrimapImage}></Image> */}
+        <Row justify='center' gutter={[0, 5]} className='descriptionDiv'>
+          <Col xs={22} md={5} >
+            {/* <Image preview={false} className='image' src={nutrimapImage}></Image> */}
           </Col>
-        <Col xs={22} md={10} className='solutionBody'>
-          <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
-          <div>
-            <p>Health,Nutrition</p>
-          </div>
-          <p className='headerParagraph'>
-            Nutrimap or Nutritional Mapping helps fight malnutrition and improve product quality
-            by improving the nutrient content of food products. We help business 
-            find the manufacturers, distributors and products 
-            necessary to create nutrient rich products. 
-          </p>
-          
-         
-          <Row justify='space-between' gutter={[0,16]}>
-          
-          <Col xs={22} md={13} className = 'solutionOverview'>
-           
-         {/* <Link to='/nutrimap' className='learnMore'>
+          <Col xs={22} md={10} className='solutionBody'>
+            <h1 className='solutionName'>Nutri<span>-</span>Map</h1>
+            <div>
+              <p>Health,Nutrition</p>
+            </div>
+            <p className='headerParagraph'>
+              Nutrimap or Nutritional Mapping helps fight malnutrition and improve product quality
+              by improving the nutrient content of food products. We help business
+              find the manufacturers, distributors and products
+              necessary to create nutrient rich products.
+            </p>
+
+
+            <Row justify='space-between' gutter={[0, 16]}>
+
+              <Col xs={22} md={13} className='solutionOverview'>
+
+                {/* <Link to='/nutrimap' className='learnMore'>
          Learn more.
      
          </Link> */}
-        <Link to='/nutrimap'> <motion.button 
-         whileHover={{color:'black',fontWeight:300,border:'1px solid black'}} 
-         transition={{duration:.1}} 
-         className='buttonNutrimap'>Learn More</motion.button></Link>
-           </Col>
+                <Link to='/nutrimap'> <motion.button
+                  whileHover={{ color: 'black', fontWeight: 300, border: '1px solid black' }}
+                  transition={{ duration: .1 }}
+                  className='buttonNutrimap'>Learn More</motion.button></Link>
+              </Col>
 
-          </Row>
-        </Col>   
-        </Row>  
-      </Row>
-
-      <Row justify='space-around' className='rowHero' gutter={[0, 100]} >
-        <Col xs={22} md={15} className='paragraphSectionIntro'>
-          
-          <h1>
-            <span className='sectionStartLetter'>S</span>olutions
-          </h1>
-          <motion.p  className='headerParagraph'>
-            Our solutions assist business operating within 
-            a broad range of industries. We design for people first then
-            engineer towards improving the bottom line. 
-             </motion.p>
-        </Col>
-
-      <Row justify='center' gutter = {[0,5]} className='descriptionDiv'>
-        <Col xs={22} md={5} >
-          {/* <Image preview={false} className='image' src={nutrimapImage}></Image> */}
+            </Row>
           </Col>
-        <Col xs={22} md={10} className='solutionBody'>
-          <h1 className = 'solutionName'>Nutri<span>-</span>Map</h1>
-          <div>
-            <p>Health,Nutrition</p>
-          </div>
-          <p className='headerParagraph'>
-            Nutrimap or Nutritional Mapping helps fight malnutrition and improve product quality
-            by improving the nutrient content of food products. We help business 
-            find the manufacturers, distributors and products 
-            necessary to create nutrient rich products. 
-          </p>
-          
-         
-          <Row justify='space-between' gutter={[0,16]}>
-          
-          <Col xs={22} md={13} className = 'solutionOverview'>
-           
-         {/* <Link to='/nutrimap' className='learnMore'>
-         Learn more.
-     
-         </Link> */}
-        <Link to='/nutrimap'> <motion.button 
-         whileHover={{color:'black',fontWeight:300,border:'1px solid black'}} 
-         transition={{duration:.1}} 
-         className='buttonNutrimap'>Learn More</motion.button></Link>
-           </Col>
-
-          </Row>
-        </Col>   
-        </Row>  
+        </Row>
       </Row>
 
 

@@ -4,26 +4,17 @@ import Nutrientmap from './db/nutrientmap'
 import * as fetch from 'isomorphic-fetch'
 import * as path from 'path'
 import bodyParser from 'body-parser'
-import { PullRequestOutlined } from '@ant-design/icons'
+import { PullRequestOutlined, RestFilled } from '@ant-design/icons'
 import 'dotenv/config'
 
 const app = express()
-app.use(Nutrientmap)
+
 app.use(express.static('public'))
 app.use(cors())
 app.use(express.json())
 app.set('trust proxy', true)
 
-// app.post('/post', async (req,res) =>{
-//     let firstdata= req.body[0]
 
-//     const data = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${firstdata}&pageSize=11&api_key=tz8FikxFkSfY7V5vpSChMeqgxthoR9ILcvLtA0Ya`)
-//     const item = await data.json()
-
-//     item.foods[0].foodNutrients.map((i:any)=>{console.log(i)})
-
-//     res.send(item)
-// })
 
 const newUse = app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
@@ -31,7 +22,9 @@ const newUse = app.use((req, res, next) => {
   next()
 })
 
-let foodsArray:[];
+
+app.use(Nutrientmap)
+let foodsArray: [];
 
 
 app.post('/nutritionalData', async (req, res, error) => {
@@ -81,7 +74,7 @@ app.post('/nutritionalData', async (req, res, error) => {
 app.post('/test', async (req, res) => {
   console.log(req.body)
 
-  
+
 
   res.sendStatus(200)
 

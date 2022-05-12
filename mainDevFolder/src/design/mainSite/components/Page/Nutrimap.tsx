@@ -197,15 +197,19 @@ const handleRegistrationClient =()=>{
   }, [nutriInfo])
 
   const onFinish = async (values: any) => {
-    const fdcData = await fetch('http://localhost:8080/test', {
+    console.log(values)
+    const fdcData = await fetch('http://localhost:8080/nutrientmap/client', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        foodSelection: values
+        values
       })
     })
+
+    const responce = fdcData.json()
+    console.log(responce)
   }
 
   const onFinishFailed = (errorInfo: any) => {
@@ -213,14 +217,13 @@ const handleRegistrationClient =()=>{
   }
   const Clients = ( <Form
     name='basic'
-    labelCol={{ span: 8 }}
-    wrapperCol={{ span: 11 }}
+
     initialValues={{ remember: true }}
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
     autoComplete='off'
   >
-    <h3>Client Registration</h3>
+    <h3 className = 'textH3'>Client Registration</h3>
     <Form.Item
       label='Business Type'
       name='businessType'
@@ -229,8 +232,8 @@ const handleRegistrationClient =()=>{
       ]}
     >
       <Select
-        style={{ width: 'fit-content' }}
-        defaultValue='Select one food item.'
+       
+        placeholder='What type of business do you operate?'
         size='middle'
       >
         <Select.Option value='Casino'>Casino</Select.Option>
@@ -254,7 +257,7 @@ const handleRegistrationClient =()=>{
     </Form.Item>
     <Form.Item
       label='Firstname'
-      name='RepresentativeFirstName'
+      name='representativeFirstName'
       rules={[
         { required: true, message: 'Please input your firstname!' }
       ]}
@@ -318,51 +321,42 @@ const handleRegistrationClient =()=>{
         Submit
       </motion.button>
     </Form.Item>
-  </Form>)
+  </Form>) 
 
 
 
-const Partners =  <Form
+const Partners = ( <Form
   name='basic'
-  labelCol={{ span: 8 }}
-  wrapperCol={{ span: 11 }}
+
   initialValues={{ remember: true }}
   onFinish={onFinish}
   onFinishFailed={onFinishFailed}
-  autoComplete='on'
+  autoComplete='off'
+  
 >
-  <h3>Partner Registration</h3>
+  <h3 className = 'textH3'>Partner Registration</h3>
   <Form.Item
-    label='Industry'
-    name='industryType'
+    label='Business Type'
+    name='businessType'
     rules={[
-      { required: true, message: 'Please input your firstname!' }
+      { required: true, message: 'Selecting the type of products you produce. You may select multiple options' }
     ]}
   >
     <Select
-      // style={{ width: 'fit-content' }}
-      defaultValue='Select one food item.'
+     
+      placeholder='Type of products offered by your institution?'
       size='middle'
-    >
-      <Select.Option value='Oilseed and Grain Farming'>Oilseed and Grain Farming</Select.Option>
-      <Select.Option value='Vegetable and Melon Farming'>Vegetable and Melon Farming</Select.Option>
-      <Select.Option value='Fruit and Tree Nut Farming'>Fruit and Tree Nut Farming</Select.Option>
-      <Select.Option value='Greenhouse, Nursery, and Floriculture Production'>Greenhouse, Nursery, and Floriculture Production</Select.Option>
-      <Select.Option value='Cattle Ranching and Farming'>Cattle Ranching and Farming</Select.Option>
-      <Select.Option value='Hog and Pig Farming'>Hog and Pig Farming</Select.Option>
-      <Select.Option value='Sheep and Goat Farming'>Sheep and Goat Farming</Select.Option>
-      <Select.Option value=' Fishing'> Fishing</Select.Option>
-      <Select.Option value='Hunting and Trapping'>Hunting and Trapping</Select.Option>
-      <Select.Option value='Food Manufacturing'>Food Manufacturing</Select.Option>
-      <Select.Option value='Beverage Manufacturing'>Beverage Manufacturing</Select.Option>
-      <Select.Option value='Farm Product Merchant Wholesalers'>Farm Product Merchant Wholesalers</Select.Option>
-      <Select.Option value='Grocery Merchant Wholesalers'>Grocery Merchant Wholesalers</Select.Option>
-      <Select.Option value='Grocery Merchant Wholesalers'>Grocery Merchant Wholesalers</Select.Option>
+ 
 
      
-
-
-
+    >
+      <Select.Option value='Casino'>Casino</Select.Option>
+      <Select.Option value='Cruise Line'>Cruise Line</Select.Option>
+      <Select.Option value='Hotel'>Hotel</Select.Option>
+      <Select.Option value='Leisure Facility'>Leisure Facility</Select.Option>
+      <Select.Option value='Resort'>Resort</Select.Option>
+      <Select.Option value='Restaurant'>Restaurant</Select.Option>
+      <Select.Option value='Grocery Market'>Grocery Market</Select.Option>
     </Select>
   </Form.Item>
 
@@ -376,10 +370,20 @@ const Partners =  <Form
     <Input />
   </Form.Item>
   <Form.Item
-    label='Zipcode'
-    name='zipcode'
+    label='Firstname'
+    name='representativeFirstName'
     rules={[
       { required: true, message: 'Please input your firstname!' }
+    ]}
+  >
+    <Input />
+  </Form.Item>
+
+  <Form.Item
+    label='Lastname'
+    name='representativeLastName'
+    rules={[
+      { required: true, message: 'Please input your lastname!' }
     ]}
   >
     <Input />
@@ -431,8 +435,7 @@ const Partners =  <Form
       Submit
     </motion.button>
   </Form.Item>
-</Form>;
-  
+</Form>);
 
   
       
@@ -445,8 +448,8 @@ const Partners =  <Form
 
   
   return (
-    <Layout>
-      <Layout>
+ 
+    
         <Content>
           <Row justify='center' className='rowHero' gutter={[0, 16]}>
             <Col xs={22} md={12} className='registration'>
@@ -556,13 +559,13 @@ const Partners =  <Form
           </Row>
 
           <Row justify='center' className='rowHero' gutter={[0, 8]}>
-            <Col xs={22} md={12} className='registration'>
+            <Col xs={22} md={12} className='forms'>
             {registration?Partners:Clients}
             </Col>
           </Row>
         </Content>
-      </Layout>
-    </Layout>
+    
+  
   )
 }
 
