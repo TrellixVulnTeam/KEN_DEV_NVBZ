@@ -145,16 +145,26 @@ const Home: React.FC = () => {
     <React.Fragment>
       <Row justify='space-around' className='rowHero' gutter={[0, 16]}>
         <Col xs={22} md={7} className='registration'>
-          <h1>Engineering business solutions that benefit the general public</h1>
+          <h1>Solutions engineered to improve consumer and stakeholder value. </h1>
           <p className='headerParagraph'>
-            At KCM INC we focus on developing solutions that improve the
-            well of our general public, maximize stakeholder value and
-            help business optimize.
+            KCM INC is a holding company focused on the development, management, and holding of enterprises that
+            benefit our general public.
           </p>
-
+          <motion.button
+            type='submit'
+            whileHover={{
+              color: 'black',
+              fontWeight: 300,
+              border: '1px solid black'
+            }}
+            transition={{ duration: 0.1 }}
+            className='clientNutrimap'
+          >
+            Learn more about our team. 
+          </motion.button>
         </Col>
         <Col xs={22} md={8} className='registration'>
-
+          <h1>Get in contact with our team and allow our expert </h1>
           <Form
             name='basic'
 
@@ -217,7 +227,7 @@ const Home: React.FC = () => {
 
       </Row>
 
-      <Row justify='space-around' className='rowHero' gutter={[0, 100]} >
+      <Row justify='center' className='rowHero' gutter={[0, 100]} >
         <Col xs={22} md={7} className='paragraphSectionIntro'>
 
           <h1>
@@ -229,28 +239,29 @@ const Home: React.FC = () => {
             engineer towards improving the bottom line.
           </motion.p>
         </Col>
+      </Row>
 
 
-
+      <Row>
         <Col xs={22} md={8} className='solutionBody'>
-          <Carousel 
-          
-          dotPosition='top'>
+          <Carousel
+
+            dotPosition='top'>
             <div>
-                <h1 className='solutionName'>Nutri<span>-</span>Map</h1>
-                <div>
-                  <p>Health,Nutrition</p>
-                </div>
-                <p className='headerParagraph'>
-                  Nutrimap or Nutritional Mapping helps fight malnutrition and improve product quality
-                  by improving the nutrient content of food products. We help business
-                  find the manufacturers, distributors and products
-                  necessary to create nutrient rich products.
-                </p>
-                <Link to='/nutrimap'> <motion.button
-                  whileHover={{ color: 'black', fontWeight: 300, border: '1px solid black' }}
-                  transition={{ duration: .1 }}
-                  className='buttonNutrimap'>Learn More</motion.button></Link>
+              <h1 className='solutionName'>Nutri<span>-</span>Map</h1>
+              <div>
+                <p>Health,Nutrition</p>
+              </div>
+              <p className='headerParagraph'>
+                Nutrimap or Nutritional Mapping helps fight malnutrition and improve product quality
+                by improving the nutrient content of food products. We help business
+                find the manufacturers, distributors and products
+                necessary to create nutrient rich products.
+              </p>
+              <Link to='/nutrimap'> <motion.button
+                whileHover={{ color: 'black', fontWeight: 300, border: '1px solid black' }}
+                transition={{ duration: .1 }}
+                className='buttonNutrimap'>Learn More</motion.button></Link>
             </div>
             <div>
               <h3 >2</h3>
